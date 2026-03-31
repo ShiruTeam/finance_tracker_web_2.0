@@ -8,17 +8,19 @@ type PerformanceMetricsProps = {
     sharpe_ratio: number;
     max_drawdown: number;
     ytd_return: number;
-  };
+  } | null;
 };
 
 export default function PerformanceMetrics({ metrics }: PerformanceMetricsProps) {
+  const valueOrNA = (value: string): string => (metrics ? value : "N/A");
+
   const cards = [
-    { label: "Total Return", value: formatPercent(metrics.total_return) },
-    { label: "Annualized Return", value: formatPercent(metrics.annualized_return) },
-    { label: "Volatility", value: formatPercent(metrics.volatility) },
-    { label: "Sharpe Ratio", value: metrics.sharpe_ratio.toFixed(2) },
-    { label: "Max Drawdown", value: formatPercent(metrics.max_drawdown) },
-    { label: "YTD Return", value: formatPercent(metrics.ytd_return) },
+    { label: "Total Return", value: valueOrNA(formatPercent(metrics?.total_return ?? 0)) },
+    { label: "Annualized Return", value: valueOrNA(formatPercent(metrics?.annualized_return ?? 0)) },
+    { label: "Volatility", value: valueOrNA(formatPercent(metrics?.volatility ?? 0)) },
+    { label: "Sharpe Ratio", value: valueOrNA((metrics?.sharpe_ratio ?? 0).toFixed(2)) },
+    { label: "Max Drawdown", value: valueOrNA(formatPercent(metrics?.max_drawdown ?? 0)) },
+    { label: "YTD Return", value: valueOrNA(formatPercent(metrics?.ytd_return ?? 0)) },
   ];
 
   return (

@@ -10,7 +10,14 @@ import { usePortfolio } from "@/app/components/mainApp/portfolioContext";
 import { useAnalytics } from "@/app/hooks/api/useAnalytics";
 import { formatPercent } from "@/app/components/mainApp/mock/format";
 
-const benchmarkOptions = ["SPY", "VOO", "QQQ", "VTI"];
+const benchmarkOptions = [
+  { symbol: "SPY", name: "S&P 500" },
+  { symbol: "VOO", name: "Vanguard S&P 500" },
+  { symbol: "QQQ", name: "Nasdaq 100" },
+  { symbol: "VTI", name: "Total Stock Market" },
+  { symbol: "ACWI", name: "MSCI All Country World" },
+  { symbol: "IWDA", name: "MSCI World" },
+];
 
 function monthsToRange() {
   const to = new Date();
@@ -32,51 +39,56 @@ export default function BenchmarksView() {
     void loadBenchmark(selectedPortfolioId, selectedBenchmark, monthsToRange());
   }, [selectedPortfolioId, selectedBenchmark, loadBenchmark]);
 
-  const chartLabels = [
-    benchmark?.start_date ?? fallbackRange.from,
-    benchmark?.end_date ?? fallbackRange.to,
-  ];
-  const chartPortfolio = [1, 1 + (benchmark?.portfolio_return ?? 0)];
-  const chartBenchmark = [1, 1 + (benchmark?.benchmark_return ?? 0)];
+  const chartLabels = benchmark
+    ? [benchmark.start_date, benchmark.end_date]
+    : [fallbackRange.from, fallbackRange.to];
+  const chartPortfolio = benchmark ? [1, 1 + benchmark.portfolio_return] : [];
+  const chartBenchmark = benchmark ? [1, 1 + benchmark.benchmark_return] : [];
 
   const metrics = useMemo(
-    () => ({
-      portfolio_return: benchmark?.portfolio_return ?? 0,
-      benchmark_return: benchmark?.benchmark_return ?? 0,
-      alpha: benchmark?.alpha ?? 0,
-      beta: benchmark?.beta ?? 0,
-      portfolio_sharpe: benchmark?.portfolio_sharpe_ratio ?? 0,
-      benchmark_sharpe: benchmark?.benchmark_sharpe_ratio ?? 0,
-      correlation: benchmark?.correlation ?? 0,
-      tracking_error: benchmark?.tracking_error ?? 0,
-      information_ratio: benchmark?.information_ratio ?? 0,
-    }),
+    () =>
+      benchmark
+        ? {
+            portfolio_return: benchmark.portfolio_return,
+            benchmark_return: benchmark.benchmark_return,
+            alpha: benchmark.alpha,
+            beta: benchmark.beta,
+            portfolio_sharpe: benchmark.portfolio_sharpe_ratio,
+            benchmark_sharpe: benchmark.benchmark_sharpe_ratio,
+            correlation: benchmark.correlation,
+            tracking_error: benchmark.tracking_error,
+            information_ratio: benchmark.information_ratio,
+          }
+        : null,
     [benchmark],
   );
 
   const riskRows = useMemo(
-    () => [
-      {
-        label: "Volatility",
-        portfolio: formatPercent(benchmark?.portfolio_volatility ?? 0),
-        benchmark: formatPercent(benchmark?.benchmark_volatility ?? 0),
-      },
-      {
-        label: "Tracking Error",
-        portfolio: formatPercent(benchmark?.tracking_error ?? 0),
-        benchmark: "-",
-      },
-      {
-        label: "Correlation",
-        portfolio: (benchmark?.correlation ?? 0).toFixed(2),
-        benchmark: "1.00",
-      },
-      {
-        label: "Information Ratio",
-        portfolio: (benchmark?.information_ratio ?? 0).toFixed(2),
-        benchmark: "-",
-      },
-    ],
+    () =>
+      benchmark
+        ? [
+            {
+              label: "Volatility",
+              portfolio: formatPercent(benchmark.portfolio_volatility),
+              benchmark: formatPercent(benchmark.benchmark_volatility),
+            },
+            {
+              label: "Tracking Error",
+              portfolio: formatPercent(benchmark.tracking_error),
+              benchmark: "-",
+            },
+            {
+              label: "Correlation",
+              portfolio: benchmark.correlation.toFixed(2),
+              benchmark: "1.00",
+            },
+            {
+              label: "Information Ratio",
+              portfolio: benchmark.information_ratio.toFixed(2),
+              benchmark: "-",
+            },
+          ]
+        : [],
     [benchmark],
   );
 
@@ -90,6 +102,11 @@ export default function BenchmarksView() {
 
         {loading ? <p className="rounded-2xl border border-[#334155] bg-black p-4 text-sm text-neutral-300">Loading benchmark comparison...</p> : null}
         {error ? <p className="rounded-2xl border border-rose-500/20 bg-rose-500/10 p-4 text-sm text-rose-300">{error}</p> : null}
+        {!loading && !error && !benchmark ? (
+          <p className="rounded-2xl border border-[#334155] bg-black p-4 text-sm text-neutral-300">
+            Benchmark data is unavailable for the selected portfolio and period.
+          </p>
+        ) : null}
 
         <BenchmarkSelector
           options={benchmarkOptions}
@@ -97,19 +114,23 @@ export default function BenchmarksView() {
           onSelect={setSelectedBenchmark}
         />
 
-        <ComparisonChart
-          labels={chartLabels}
-          portfolio={chartPortfolio}
-          benchmark={chartBenchmark}
-          benchmarkSymbol={selectedBenchmark}
-        />
+        {benchmark ? (
+          <ComparisonChart
+            labels={chartLabels}
+            portfolio={chartPortfolio}
+            benchmark={chartBenchmark}
+            benchmarkSymbol={selectedBenchmark}
+          />
+        ) : null}
 
         <ComparisonMetrics metrics={metrics} />
 
-        <section className="grid gap-4 xl:grid-cols-2">
-          <RiskMetricsTable benchmarkSymbol={selectedBenchmark} rows={riskRows} />
-          <AlphaBetaExplanation />
-        </section>
+        {benchmark ? (
+          <section className="grid gap-4 xl:grid-cols-2">
+            <RiskMetricsTable benchmarkSymbol={selectedBenchmark} rows={riskRows} />
+            <AlphaBetaExplanation />
+          </section>
+        ) : null}
       </div>
     </div>
   );

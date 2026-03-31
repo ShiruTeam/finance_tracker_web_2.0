@@ -11,20 +11,22 @@ type ComparisonMetricsProps = {
     correlation: number;
     tracking_error: number;
     information_ratio: number;
-  };
+  } | null;
 };
 
 export default function ComparisonMetrics({ metrics }: ComparisonMetricsProps) {
+  const valueOrNA = (value: string): string => (metrics ? value : "N/A");
+
   const cards = [
-    { label: "Portfolio Return", value: formatPercent(metrics.portfolio_return) },
-    { label: "Benchmark Return", value: formatPercent(metrics.benchmark_return) },
-    { label: "Alpha", value: formatPercent(metrics.alpha) },
-    { label: "Beta", value: metrics.beta.toFixed(2) },
-    { label: "Portfolio Sharpe", value: metrics.portfolio_sharpe.toFixed(2) },
-    { label: "Benchmark Sharpe", value: metrics.benchmark_sharpe.toFixed(2) },
-    { label: "Correlation", value: metrics.correlation.toFixed(2) },
-    { label: "Tracking Error", value: formatPercent(metrics.tracking_error) },
-    { label: "Information Ratio", value: metrics.information_ratio.toFixed(2) },
+    { label: "Portfolio Return", value: valueOrNA(formatPercent(metrics?.portfolio_return ?? 0)) },
+    { label: "Benchmark Return", value: valueOrNA(formatPercent(metrics?.benchmark_return ?? 0)) },
+    { label: "Alpha", value: valueOrNA(formatPercent(metrics?.alpha ?? 0)) },
+    { label: "Beta", value: valueOrNA((metrics?.beta ?? 0).toFixed(2)) },
+    { label: "Portfolio Sharpe", value: valueOrNA((metrics?.portfolio_sharpe ?? 0).toFixed(2)) },
+    { label: "Benchmark Sharpe", value: valueOrNA((metrics?.benchmark_sharpe ?? 0).toFixed(2)) },
+    { label: "Correlation", value: valueOrNA((metrics?.correlation ?? 0).toFixed(2)) },
+    { label: "Tracking Error", value: valueOrNA(formatPercent(metrics?.tracking_error ?? 0)) },
+    { label: "Information Ratio", value: valueOrNA((metrics?.information_ratio ?? 0).toFixed(2)) },
   ];
 
   return (

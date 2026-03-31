@@ -49,17 +49,20 @@ export default function AnalyticsView() {
     });
   }, [snapshots]);
 
-  const metrics = useMemo(
-    () => ({
-      total_return: performance?.total_return ?? 0,
-      annualized_return: performance?.annualized_return ?? 0,
-      volatility: performance?.volatility ?? 0,
-      sharpe_ratio: performance?.sharpe_ratio ?? 0,
-      max_drawdown: performance?.max_drawdown ?? 0,
-      ytd_return: performance?.year_to_date_return ?? 0,
-    }),
-    [performance],
-  );
+  const metrics = useMemo(() => {
+    if (!performance) {
+      return null;
+    }
+
+    return {
+      total_return: performance.total_return,
+      annualized_return: performance.annualized_return,
+      volatility: performance.volatility,
+      sharpe_ratio: performance.sharpe_ratio,
+      max_drawdown: performance.max_drawdown,
+      ytd_return: performance.year_to_date_return,
+    };
+  }, [performance]);
 
   return (
     <div className="w-full flex-1 overflow-y-auto rounded-3xl border border-[#334155] bg-black p-3 sm:p-5">
