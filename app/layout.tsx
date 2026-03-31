@@ -48,7 +48,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const siteName = process.env.NEXT_PUBLIC_SITE_NAME || "Mile";
+const siteName = process.env.NEXT_PUBLIC_SITE_NAME || "Shiru";
 const siteDescription =
   process.env.NEXT_PUBLIC_SITE_DESCRIPTION ||
   "Track and manage your investment portfolios with advanced analytics and performance metrics.";
@@ -98,7 +98,7 @@ export const metadata: Metadata = {
     title: `${siteName} - Investment Portfolio Tracker`,
     description: siteDescription,
     images: ["/og-image.png"],
-    creator: "@MileFinance",
+    creator: "@ShiruApp",
   },
   robots: {
     index: true,

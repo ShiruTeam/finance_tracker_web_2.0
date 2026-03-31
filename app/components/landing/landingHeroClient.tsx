@@ -252,7 +252,7 @@ function HeroThreeGradient() {
 export default function LandingHeroClient({ sectionId }: { sectionId?: string }) {
 	const paragraphRef = useRef<HTMLParagraphElement>(null);
 	const sentenceParts = [
-		{ text: "Mile is a modern " },
+		{ text: "Shiru is a modern " },
 		{ text: "investment tracking", highlight: true },
 		{ text: " platform designed to give users complete " },
 		{ text: "clarity", highlight: true },
@@ -322,7 +322,7 @@ export default function LandingHeroClient({ sectionId }: { sectionId?: string })
 			<div className="absolute inset-0 bg-black/18" aria-hidden="true" />
 			<Image
 				src="/logo/Logo.svg"
-				alt="WSPort logo"
+				alt="Shiru logo"
 				width={1}
 				height={1}
 				className="absolute left-1/2 top-1/2 z-10 w-[min(74vw,42rem)] -translate-x-1/2 -translate-y-1/2"

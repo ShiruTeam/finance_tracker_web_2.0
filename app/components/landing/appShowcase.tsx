@@ -55,8 +55,8 @@ export default function AppShowcase() {
     <section className="w-full px-6 py-20 pb-0 sm:px-8 lg:px-12" id="showcase">
       <div className="mx-auto w-full max-w-7xl">
         <div className="mx-auto mb-10 max-w-3xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#FFB95D]">Inside Mile</p>
-          <h2 className="mt-2 text-3xl font-black text-white sm:text-4xl">A cleaner look at how Mile works</h2>
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#FFB95D]">Inside Shiru</p>
+          <h2 className="mt-2 text-3xl font-black text-white sm:text-4xl">A cleaner look at how Shiru works</h2>
           <p className="mt-3 text-sm text-white/70 sm:text-base">
             A quick product walkthrough with real screens and concise explanations.
           </p>

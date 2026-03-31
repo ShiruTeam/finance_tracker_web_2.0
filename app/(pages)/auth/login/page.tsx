@@ -84,9 +84,9 @@ export default function LoginView() {
             <section className="relative grid h-full w-full overflow-hidden bg-black/50 backdrop-blur-sm lg:grid-cols-2">
                 <aside className="hero-gradient-card hidden h-full flex-col justify-between p-12 text-white lg:flex">
                     <div className="space-y-4">
-                        <Image src="/logo/Logo.svg" alt="Mile logo" width={1600} height={400} className="h-10 w-auto" priority />
+                        <Image src="/logo/LogoHeader.svg" alt="Shiru logo" width={1600} height={400} className="h-10 w-auto" priority />
                         <p className="w-fit rounded-full border border-[#FFB95D]/45 bg-[#FFB95D]/10 px-4 py-1 text-xs font-semibold tracking-[0.2em] text-[#FFB95D]">
-                            MILE PORTFOLIO
+                            SHIRU PORTFOLIO
                         </p>
                         <h1 className="text-4xl font-black leading-tight">
                             Welcome back
@@ -101,7 +101,7 @@ export default function LoginView() {
 
                 <div className="flex items-center justify-center bg-black/65 p-8 text-white sm:p-10 lg:p-12">
                     <div className="mx-auto w-full max-w-md">
-                        <Image src="/logo/Logo.svg" alt="Mile logo" width={1600} height={400} className="mb-4 h-8 w-auto lg:hidden" priority />
+                        <Image src="/logo/Logo.svg" alt="Shiru logo" width={1600} height={400} className="mb-4 h-8 w-auto lg:hidden" priority />
                         <div className="mb-8">
                             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#FFB95D]">Sign In</p>
                             <h2 className="mt-3 text-3xl font-black text-white">Access your account</h2>

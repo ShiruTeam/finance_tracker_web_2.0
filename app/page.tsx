@@ -19,7 +19,7 @@ function Header({ visible }: { visible: boolean }) {
 			}`}
 		>
 			<Image
-				src="/logo/Logo.svg"
+				src="/logo/LogoHeader.svg"
 				alt="Mile logo"
 				width={1600}
 				height={400}

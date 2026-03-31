@@ -17,13 +17,13 @@ const footerLinks = {
 	company: [
 		{ label: "About", href: "/#about" },
 		{ label: "Security", href: "/legal/security" },
-		{ label: "Careers", href: "mailto:support@mileapp.com?subject=Careers%20at%20Mile" },
-		{ label: "Contact", href: "mailto:support@mileapp.com" },
+		{ label: "Careers", href: "mailto:support@shiruapp.com?subject=Careers%20at%20shiru" },
+		{ label: "Contact", href: "mailto:support@shiruapp.com" },
 	],
 	resources: [
-		{ label: "Help Center", href: "mailto:support@mileapp.com?subject=Help%20Center%20Request" },
+		{ label: "Help Center", href: "mailto:support@shiruapp.com?subject=Help%20Center%20Request" },
 		{ label: "API Docs", href: "/openapi/backend-api.yaml" },
-		{ label: "Status", href: "mailto:support@mileapp.com?subject=Platform%20Status" },
+		{ label: "Status", href: "mailto:support@shiruapp.com?subject=Platform%20Status" },
 		{ label: "Privacy", href: "/legal/privacy" },
 	],
 };
@@ -38,8 +38,8 @@ export default function Footer() {
 					<div className="grid grid-cols-1 gap-8 md:grid-cols-[1.35fr_1fr_1fr_1fr] md:gap-6">
 						<div>
 							<Image
-								src="/logo/Logo.svg"
-								alt="Mile logo"
+								src="/logo/LogoHeader.svg"
+								alt="shiru logo"
 								width={1600}
 								height={400}
 								className="h-10 w-auto"
@@ -48,7 +48,7 @@ export default function Footer() {
 								A modern portfolio workspace to track holdings, performance, and risk with clarity.
 							</p>
 							<p className="mt-3 text-xs uppercase tracking-[0.16em] text-[#FFB95D]">
-								Support: support@mileapp.com
+								Support: support@shiruapp.com
 							</p>
 						</div>
 
@@ -93,7 +93,7 @@ export default function Footer() {
 					</div>
 
 					<div className="mt-8 flex flex-col gap-2 border-t border-white/10 pt-4 text-xs text-white/55 sm:flex-row sm:items-center sm:justify-between">
-						<p>© {year} Mile. All rights reserved.</p>
+						<p>© {year} shiru. All rights reserved.</p>
 						<p>Built for long-term investors and active portfolio tracking.</p>
 					</div>
 				</div>

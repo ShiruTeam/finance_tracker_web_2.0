@@ -19,7 +19,7 @@ export default function ResetPasswordPage() {
           <div className="space-y-4">
             <Image
               src="/logo/Logo.svg"
-              alt="Mile logo"
+              alt="Shiru logo"
               width={1600}
               height={400}
               className="h-10 w-auto"
@@ -44,7 +44,7 @@ export default function ResetPasswordPage() {
           <div className="mx-auto w-full max-w-md">
             <Image
               src="/logo/Logo.svg"
-              alt="Mile logo"
+              alt="Shiru logo"
               width={1600}
               height={400}
               className="mb-4 h-8 w-auto lg:hidden"
