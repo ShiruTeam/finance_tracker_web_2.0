@@ -29,7 +29,7 @@ const nextConfig: NextConfig = {
           {
             key: "Content-Security-Policy",
             value: [
-              "default-src 'self'", 
+              "default-src 'self'",
               "base-uri 'self'",
               "form-action 'self'",
               "frame-ancestors 'none'",
@@ -37,11 +37,11 @@ const nextConfig: NextConfig = {
               "frame-src 'none'",
               "manifest-src 'self'",
               "media-src 'self'",
-              "img-src 'self' data: blob: https:",
-              "font-src 'self' data:",
-              "style-src 'self' 'unsafe-inline' https:",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https:",
-              "connect-src 'self' https:"
+              "img-src 'self' data: blob: https: cdn.jsdelivr.net cdnjs.cloudflare.com unpkg.com tradingview.com",
+              "font-src 'self' data: fonts.gstatic.com cdn.jsdelivr.net",
+              "style-src 'self' 'unsafe-inline' https: fonts.googleapis.com cdn.jsdelivr.net cdnjs.cloudflare.com unpkg.com tradingview.com",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https: cdn.jsdelivr.net cdnjs.cloudflare.com unpkg.com tradingview.com",
+              "connect-src 'self' https: cdn.jsdelivr.net cdnjs.cloudflare.com unpkg.com tradingview.com",
             ].join('; '),
           },
           { key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains; preload" },
