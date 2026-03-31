@@ -18,16 +18,38 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Environment variables
 
-Set these in `.env.local` before running the app:
+For deployment, set these in your server environment (or `.env.production` / platform secrets):
 
 ```bash
-NEXT_PUBLIC_API_BASE_URL=http://localhost:8080
-NEXT_PUBLIC_GOOGLE_AUTH_URL=http://localhost:8080/api/auth/google
-NEXT_PUBLIC_DEV_DEFAULT_ROUTE=/dashboard
+# Required
+NEXT_PUBLIC_API_BASE_URL=https://api.yourdomain.com
+
+# Recommended for production metadata
+NEXT_PUBLIC_SITE_URL=https://yourdomain.com
+
+# Optional
+NEXT_PUBLIC_GOOGLE_AUTH_URL=https://api.yourdomain.com/api/auth/google
+NEXT_PUBLIC_SITE_NAME=Mile
+NEXT_PUBLIC_SITE_DESCRIPTION=Track and manage your investment portfolios with advanced analytics and performance metrics.
+
+# Usually set by the platform/process manager
+NODE_ENV=production
 ```
 
-- `NEXT_PUBLIC_API_BASE_URL` is required.
-- `NEXT_PUBLIC_GOOGLE_AUTH_URL` is optional. If omitted, the app builds it from `NEXT_PUBLIC_API_BASE_URL`.
+### Variable reference
+
+- `NEXT_PUBLIC_API_BASE_URL` (required): Backend base URL used by API client and middleware CSP.
+- `NEXT_PUBLIC_SITE_URL` (recommended): Public app URL used for canonical URLs, sitemap, and robots endpoints.
+- `NEXT_PUBLIC_GOOGLE_AUTH_URL` (optional): Custom Google auth URL. If omitted, it is built from `NEXT_PUBLIC_API_BASE_URL`.
+- `NEXT_PUBLIC_SITE_NAME` (optional): Site/brand name for metadata.
+- `NEXT_PUBLIC_SITE_DESCRIPTION` (optional): SEO description text.
+- `NODE_ENV` (deployment runtime): Should be `production`.
+
+For local development, copy from `.env.example`:
+
+```bash
+cp .env.example .env.local
+```
 
 ## Set a default page for development
 
