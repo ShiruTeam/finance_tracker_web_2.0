@@ -30,6 +30,7 @@ const alpino = localFont({
   variable: "--font-alpino",
   display: "swap",
   preload: true,
+  fallback: ["system-ui", "-apple-system"],
 });
 
 const sentient = localFont({
@@ -43,6 +44,7 @@ const sentient = localFont({
   variable: "--font-sentient",
   display: "swap",
   preload: true,
+  fallback: ["Georgia", "serif"],
 });
 
 const geistMono = Geist_Mono({
@@ -78,6 +80,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   alternates: {
     canonical: siteUrl,
+  },
+  verification: {
+    google: "google-site-verification-code",
   },
   openGraph: {
     title: `${siteName} - Investment Portfolio Tracker`,

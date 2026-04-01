@@ -61,6 +61,26 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      // Next.js static assets (immutable due to content hashing) - 1 year cache
+      {
+        source: "/_next/static/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      // Next.js optimized images - 1 year cache
+      {
+        source: "/_next/image/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
       // API routes with no cache
       {
         source: "/api/:path*",
