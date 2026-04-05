@@ -189,38 +189,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     [applyAuthResponse],
   );
 
-  const handleGoogleAuth = useCallback(async () => {
-    setAuthError(null);
-    try {
-      if (!window.google) {
-        await new Promise((resolve) => setTimeout(resolve, 100));
-        if (!window.google) throw new Error("Google SDK failed to load");
-      }
+  const loginWithGoogle = useCallback(async () => {
+    window.location.href = apiClient.getGoogleAuthUrl("login");
+  }, []);
 
-      initializeGoogleSignIn(async (idToken: string) => {
-        try {
-          const auth = await apiClient.googleAuth(idToken);
-          applyAuthResponse(auth);
-        } catch (error) {
-          const message =
-            typeof error === "object" && error && "message" in error
-              ? String((error as { message: string }).message)
-              : "Google Sign-In failed. Please try again.";
-          setAuthError(message);
-        }
-      });
-
-      // Show the Google One Tap UI prompt
-      // (This will pop up the standard Google slide-in instead of a redirect)
-      window.google.accounts.id.prompt();
-    } catch (error) {
-      console.error("Google Auth Error:", error);
-      setAuthError("Unable to initialize Google Sign-In.");
-    }
-  }, [applyAuthResponse]);
-
-  const loginWithGoogle = handleGoogleAuth;
-  const registerWithGoogle = handleGoogleAuth;
+  const registerWithGoogle = useCallback(async () => {
+    window.location.href = apiClient.getGoogleAuthUrl("register");
+  }, []);
 
   const value = useMemo<AuthContextValue>(
     () => ({
