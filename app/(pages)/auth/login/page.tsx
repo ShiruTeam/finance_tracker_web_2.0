@@ -113,13 +113,25 @@ export default function LoginView() {
                 <div className="flex w-full justify-center">
                   <GoogleLogin
                     onSuccess={async (credentialResponse) => {
+                      console.log(
+                        "Google Login Popup Success:",
+                        credentialResponse,
+                      );
                       if (credentialResponse.credential) {
                         try {
+                          console.log(
+                            "Calling loginWithGoogle context method...",
+                          );
                           await loginWithGoogle(credentialResponse.credential);
+                          console.log(
+                            "loginWithGoogle success, redirecting to dashboard...",
+                          );
                           window.location.href = "/mainApp?view=dashboard";
                         } catch (error) {
                           console.error("Google sign-in failed:", error);
                         }
+                      } else {
+                        console.error("No credential in response");
                       }
                     }}
                     onError={() => {

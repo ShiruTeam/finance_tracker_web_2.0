@@ -191,11 +191,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const handleGoogleAuth = useCallback(
     async (idToken: string) => {
+      console.log(
+        "handleGoogleAuth called with token starting with:",
+        idToken.substring(0, 15),
+      );
       setAuthError(null);
       try {
+        console.log("Sending token to backend at /api/auth/google...");
         const auth = await apiClient.googleAuth(idToken);
+        console.log("Backend responded successfully:", auth);
         applyAuthResponse(auth);
+        console.log("Applied auth response to context/local storage.");
       } catch (error) {
+        console.error("Backend error from /api/auth/google:", error);
         const message =
           typeof error === "object" && error && "message" in error
             ? String((error as { message: string }).message)
