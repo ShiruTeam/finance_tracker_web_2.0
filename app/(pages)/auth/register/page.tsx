@@ -131,7 +131,7 @@ export default function RegisterView() {
                   if (credentialResponse.credential) {
                     try {
                       await registerWithGoogle(credentialResponse.credential);
-                      router.push("/mainApp?view=dashboard");
+                      window.location.href = "/mainApp?view=dashboard";
                     } catch (error) {
                       console.error("Google sign-in failed:", error);
                     }
