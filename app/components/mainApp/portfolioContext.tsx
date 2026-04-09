@@ -36,7 +36,8 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
     setError(null);
     try {
       const fetched = await apiClient.listPortfolios(token);
-      setPortfolios(fetched);
+      // Defensive: normalize null response to empty array for new accounts
+      setPortfolios(fetched ?? []);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Unable to load portfolios.");
     } finally {
