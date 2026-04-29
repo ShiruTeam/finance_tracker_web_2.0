@@ -39,10 +39,10 @@ export default function RealizedGainsTable({ rows }: RealizedGainsTableProps) {
             {rows.map((row) => (
               <tr key={`${row.ticker}-${row.sale_date}`} className="border-t text-neutral-200">
                 <td className="px-4 py-3 font-semibold text-white">{row.ticker}</td>
-                <td className="px-4 py-3">{row.quantity}</td>
-                <td className="px-4 py-3">{eur.format(row.cost_basis)}</td>
-                <td className="px-4 py-3">{eur.format(row.sale_price)}</td>
-                <td className={`px-4 py-3 font-semibold ${row.gain_loss >= 0 ? "text-[#2dd4bf]" : "text-rose-300"}`}>
+                <td className="font-numeric px-4 py-3">{row.quantity}</td>
+                <td className="font-numeric px-4 py-3">{eur.format(row.cost_basis)}</td>
+                <td className="font-numeric px-4 py-3">{eur.format(row.sale_price)}</td>
+                <td className={`font-numeric px-4 py-3 font-semibold ${row.gain_loss >= 0 ? "text-[#2dd4bf]" : "text-rose-300"}`}>
                   {eur.format(row.gain_loss)}
                 </td>
                 <td className="px-4 py-3 text-xs text-neutral-400">{`${row.holding_period} (${row.is_short_term ? "Short" : "Long"})`}</td>

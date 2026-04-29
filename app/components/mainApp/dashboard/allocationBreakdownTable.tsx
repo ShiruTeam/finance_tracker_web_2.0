@@ -101,12 +101,12 @@ function BreakdownTable({ rows }: { rows: Row[] }) {
           {rows.map((row) => (
             <tr key={row.label} className="border-t text-neutral-200">
               <td className="px-4 py-3 font-semibold text-white">{row.label}</td>
-              <td className="px-4 py-3 text-right font-semibold">{eur.format(row.cost)}</td>
-              <td className="px-4 py-3 text-right font-semibold">{eur.format(row.value)}</td>
-              <td className={`px-4 py-3 text-right font-extrabold ${gainClass(row.gain)}`}>
+              <td className="font-numeric px-4 py-3 text-right font-semibold">{eur.format(row.cost)}</td>
+              <td className="font-numeric px-4 py-3 text-right font-semibold">{eur.format(row.value)}</td>
+              <td className={`font-numeric px-4 py-3 text-right font-extrabold ${gainClass(row.gain)}`}>
                 {eur.format(row.gain)}
               </td>
-              <td className={`px-4 py-3 text-right font-extrabold ${gainClass(row.gain)}`}>
+              <td className={`font-numeric px-4 py-3 text-right font-extrabold ${gainClass(row.gain)}`}>
                 {formatPercent(row.gainPercent)}
               </td>
             </tr>

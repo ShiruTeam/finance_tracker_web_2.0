@@ -39,7 +39,7 @@ export default function AssetTypePerformanceBars({ positions, loading }: Props) 
             <li key={row.name} className="space-y-1">
               <div className="flex items-center justify-between text-sm">
                 <span className="font-medium text-white">{row.name}</span>
-                <span className={positive ? "text-[#2dd4bf]" : "text-rose-300"}>{`${positive ? "+" : ""}${(row.gainPercent * 100).toFixed(2)}%`}</span>
+                <span className={`font-numeric ${positive ? "text-[#2dd4bf]" : "text-rose-300"}`}>{`${positive ? "+" : ""}${(row.gainPercent * 100).toFixed(2)}%`}</span>
               </div>
               <div className="h-2 rounded-full bg-[#1e1e35]">
                 <div className={`h-2 rounded-full ${positive ? "bg-[#14b8a6]" : "bg-rose-400"}`} style={{ width: `${width}%` }} />

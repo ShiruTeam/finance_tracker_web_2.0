@@ -33,7 +33,7 @@ export default function PerformanceMetrics({ metrics }: PerformanceMetricsProps)
         {cards.map((card) => (
           <article key={card.label} className="rounded-md bg-transparent border border-surface p-4">
             <p className="text-xs uppercase tracking-[0.14em] text-neutral-400">{card.label}</p>
-            <p className="mt-2 text-2xl font-semibold text-white">{card.value}</p>
+            <p className="mt-2 font-numeric text-2xl font-semibold text-white">{card.value}</p>
           </article>
         ))}
       </div>

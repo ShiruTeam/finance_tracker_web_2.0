@@ -32,7 +32,7 @@ export default function DividendIncome({ rows }: DividendIncomeProps) {
             {rows.map((row) => (
               <tr key={`${row.ticker}-${row.payment_date}`} className="border-t text-neutral-200">
                 <td className="px-4 py-3 font-semibold text-white">{row.ticker}</td>
-                <td className="px-4 py-3 text-[#2dd4bf]">{eur.format(row.amount)}</td>
+                <td className="font-numeric px-4 py-3 text-[#2dd4bf]">{eur.format(row.amount)}</td>
                 <td className="px-4 py-3">{row.payment_date}</td>
                 <td className="px-4 py-3 text-xs text-neutral-400">{row.is_qualified ? "Qualified" : "Non-qualified"}</td>
               </tr>

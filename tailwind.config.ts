@@ -11,6 +11,7 @@ const config: Config = {
         sans: ['var(--font-alpino)', 'system-ui', 'sans-serif'],
         serif: ['var(--font-sentient)', 'serif'],
         mono: ['var(--font-geist-mono)', 'monospace'],
+        numeric: ['ui-rounded', 'SF Pro Rounded', 'system-ui', 'sans-serif'],
       },
       fontWeight: {
         normal: '400',

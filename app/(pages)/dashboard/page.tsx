@@ -86,7 +86,7 @@ export default function Dashboard() {
   }, [loadDashboard]);
 
   return (
-    <div className="w-full flex-1 overflow-y-auto p-3 sm:p-5" style={{ backgroundColor: "#252422" }}>
+    <div className="w-full flex-1 overflow-y-auto bg-mainapp p-2 sm:p-3">
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-4">
         <header className="flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:justify-between">
           <div>

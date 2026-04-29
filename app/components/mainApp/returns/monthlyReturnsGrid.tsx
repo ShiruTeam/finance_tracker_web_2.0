@@ -27,7 +27,7 @@ export default function MonthlyReturnsGrid({ rows }: MonthlyReturnsGridProps) {
               }`}
             >
               <p className="text-xs uppercase tracking-[0.08em] text-neutral-400">{row.month}</p>
-              <p className={`mt-1 text-sm font-semibold ${positive ? "text-[#2dd4bf]" : "text-rose-300"}`}>
+              <p className={`mt-1 font-numeric text-sm font-semibold ${positive ? "text-[#2dd4bf]" : "text-rose-300"}`}>
                 {formatPercent(row.return)}
               </p>
             </article>

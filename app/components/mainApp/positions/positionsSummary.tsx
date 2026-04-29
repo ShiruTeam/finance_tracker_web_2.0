@@ -1,4 +1,4 @@
-import { eur, formatPercent } from "@/components/mainApp/mock/format";
+import { eurSmart, formatPercent } from "@/components/mainApp/mock/format";
 
 type PositionsSummaryProps = {
   summary: {
@@ -20,15 +20,15 @@ export default function PositionsSummary({ summary }: PositionsSummaryProps) {
       <div className="grid gap-3 md:grid-cols-3">
         <article className="rounded-md bg-transparent border border-surface p-4">
           <p className="text-xs uppercase tracking-[0.14em] text-neutral-400">Total Cost</p>
-          <p className="mt-2 text-2xl font-black text-white">{eur.format(summary.total_cost)}</p>
+          <p className="mt-2 font-numeric text-2xl font-semibold text-white">{eurSmart(summary.total_cost)}</p>
         </article>
         <article className="rounded-md bg-transparent border border-surface p-4">
           <p className="text-xs uppercase tracking-[0.14em] text-neutral-400">Total Value</p>
-          <p className="mt-2 text-2xl font-black text-white">{eur.format(summary.total_value)}</p>
+          <p className="mt-2 font-numeric text-2xl font-semibold text-white">{eurSmart(summary.total_value)}</p>
         </article>
         <article className="rounded-md border bg-transparent border border-surface p-4">
           <p className="text-xs uppercase tracking-[0.14em] text-neutral-400">Total Gain</p>
-          <p className="mt-2 text-2xl font-black text-[#2dd4bf]">{eur.format(summary.total_gain)}</p>
+          <p className="mt-2 font-numeric text-2xl font-semibold text-[#2dd4bf]">{eurSmart(summary.total_gain)}</p>
           <p className="text-sm text-[#2dd4bf]">{formatPercent(summary.total_gain_percent)}</p>
         </article>
       </div>

@@ -26,7 +26,7 @@ export default function ReturnsCalendar({ rows }: ReturnsCalendarProps) {
             >
               <p className="text-xs uppercase tracking-[0.08em] text-neutral-400">{item.month}</p>
               <p
-                className={`mt-2 whitespace-nowrap text-xs font-semibold tabular-nums sm:text-sm ${
+                className={`mt-2 whitespace-nowrap font-numeric text-xs font-semibold sm:text-sm ${
                   positive ? "text-[#2dd4bf]" : "text-rose-300"
                 }`}
               >

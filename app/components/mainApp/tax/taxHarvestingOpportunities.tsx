@@ -1,4 +1,4 @@
-import { eur } from "@/components/mainApp/mock/format";
+import { eurSmart } from "@/components/mainApp/mock/format";
 
 type Opportunity = {
   ticker: string;
@@ -22,7 +22,7 @@ export default function TaxHarvestingOpportunities({ rows }: TaxHarvestingOpport
           <article key={row.ticker} className="rounded-md bg-transparent border border-surface p-4">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <p className="text-lg font-semibold text-white">{row.ticker}</p>
-              <p className="text-sm font-semibold text-rose-300">{eur.format(row.unrealized_loss)}</p>
+              <p className="font-numeric text-sm font-semibold text-rose-300">{eurSmart(row.unrealized_loss)}</p>
             </div>
             <p className="mt-2 text-sm text-neutral-300">{row.recommendation}</p>
           </article>

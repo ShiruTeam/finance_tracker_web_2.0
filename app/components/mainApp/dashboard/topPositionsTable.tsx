@@ -61,10 +61,10 @@ export default function TopPositionsTable({ positions, loading }: Props) {
                       <p className="font-semibold text-white">{row.ticker}</p>
                       <p className="text-xs text-neutral-400">{row.name}</p>
                     </td>
-                    <td className="px-4 py-3">{row.shares.toFixed(4)}</td>
-                    <td className="px-4 py-3">{eur.format(row.current_price)}</td>
-                    <td className="px-4 py-3 font-semibold text-white">{eur.format(row.total_value)}</td>
-                    <td className={`px-4 py-3 font-semibold ${positive ? "text-[#2dd4bf]" : "text-rose-400"}`}>
+                    <td className="font-numeric px-4 py-3">{row.shares.toFixed(4)}</td>
+                    <td className="font-numeric px-4 py-3">{eur.format(row.current_price)}</td>
+                    <td className="font-numeric px-4 py-3 font-semibold text-white">{eur.format(row.total_value)}</td>
+                    <td className={`font-numeric px-4 py-3 font-semibold ${positive ? "text-[#2dd4bf]" : "text-rose-400"}`}>
                       {`${positive ? "+" : ""}${eur.format(row.gain)} (${(row.gain_percent * 100).toFixed(2)}%)`}
                     </td>
                   </tr>

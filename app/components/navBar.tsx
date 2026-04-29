@@ -36,7 +36,7 @@ function isDropdownItem(item: NavItem): item is DropdownItem {
 }
 
 const navItems: NavItem[] = [
-    { label: "Dashboard", href: "/mainApp?view=dashboard", icon: <LayoutDashboard size={16} /> },
+    { label: "Dashboard", href: "/mainApp/dashboard", icon: <LayoutDashboard size={16} /> },
     {
         label: "Investments",
         icon: <Wallet size={16} />,

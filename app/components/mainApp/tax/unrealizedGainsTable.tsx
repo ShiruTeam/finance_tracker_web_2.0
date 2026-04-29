@@ -37,10 +37,10 @@ export default function UnrealizedGainsTable({ rows }: UnrealizedGainsTableProps
             {rows.map((row) => (
               <tr key={row.ticker} className="border-t text-neutral-200">
                 <td className="px-4 py-3 font-semibold text-white">{row.ticker}</td>
-                <td className="px-4 py-3">{row.shares}</td>
-                <td className="px-4 py-3">{eur.format(row.average_cost)}</td>
-                <td className="px-4 py-3">{eur.format(row.current_price)}</td>
-                <td className={`px-4 py-3 font-semibold ${row.unrealized_gain >= 0 ? "text-[#2dd4bf]" : "text-rose-300"}`}>
+                <td className="font-numeric px-4 py-3">{row.shares}</td>
+                <td className="font-numeric px-4 py-3">{eur.format(row.average_cost)}</td>
+                <td className="font-numeric px-4 py-3">{eur.format(row.current_price)}</td>
+                <td className={`font-numeric px-4 py-3 font-semibold ${row.unrealized_gain >= 0 ? "text-[#2dd4bf]" : "text-rose-300"}`}>
                   {`${eur.format(row.unrealized_gain)} (${formatPercent(row.gain_percent)})`}
                 </td>
                 <td className="px-4 py-3 text-xs text-neutral-400">{row.holding_period}</td>

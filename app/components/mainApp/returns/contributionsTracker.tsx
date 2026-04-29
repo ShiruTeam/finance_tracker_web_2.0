@@ -23,7 +23,7 @@ export default function ContributionsTracker({ rows }: ContributionsTrackerProps
           <div key={row.period}>
             <div className="mb-1 flex items-center justify-between text-xs text-neutral-400">
               <span>{row.period}</span>
-              <span>{eur.format(row.value)}</span>
+              <span className="font-numeric">{eur.format(row.value)}</span>
             </div>
             <div className="h-2 rounded-full bg-[#1e1e35]">
               <div className="h-full rounded-full bg-[#14b8a6]" style={{ width: `${(row.value / max) * 100}%` }} />

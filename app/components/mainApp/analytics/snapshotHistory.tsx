@@ -31,9 +31,9 @@ export default function SnapshotHistory({ snapshots }: SnapshotHistoryProps) {
             {snapshots.map((snapshot) => (
               <tr key={snapshot.date} className="border-t text-neutral-200">
                 <td className="px-4 py-3">{snapshot.date}</td>
-                <td className="px-4 py-3 font-semibold text-white">{eur.format(snapshot.total_value)}</td>
-                <td className="px-4 py-3">{eur.format(snapshot.total_cost)}</td>
-                <td className="px-4 py-3 text-[#2dd4bf]">{`${eur.format(snapshot.total_gain)} (${formatPercent(snapshot.gain_percent)})`}</td>
+                <td className="font-numeric px-4 py-3 font-semibold text-white">{eur.format(snapshot.total_value)}</td>
+                <td className="font-numeric px-4 py-3">{eur.format(snapshot.total_cost)}</td>
+                <td className="font-numeric px-4 py-3 text-[#2dd4bf]">{`${eur.format(snapshot.total_gain)} (${formatPercent(snapshot.gain_percent)})`}</td>
               </tr>
             ))}
           </tbody>

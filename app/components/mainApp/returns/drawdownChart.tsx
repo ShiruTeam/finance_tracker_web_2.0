@@ -38,7 +38,7 @@ export default function DrawdownChart({ rows }: DrawdownChartProps) {
 
       <div className="mt-3 text-sm text-neutral-300">
         <span className="text-neutral-400">Max drawdown: </span>
-        <span className="font-semibold text-rose-300">{formatPercent(maxDrawdown)}</span>
+        <span className="font-numeric font-semibold text-rose-300">{formatPercent(maxDrawdown)}</span>
       </div>
     </section>
   );

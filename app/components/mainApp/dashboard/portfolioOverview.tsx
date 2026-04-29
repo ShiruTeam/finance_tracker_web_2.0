@@ -1,6 +1,7 @@
 
 import type { PortfolioSummary } from "@/lib/api/types";
 import { SkeletonCard } from "@/components/ui/skeleton";
+import { eurSmart } from "@/components/mainApp/mock/format";
 
 type Props = {
     summary: PortfolioSummary | null;
@@ -8,15 +9,6 @@ type Props = {
 };
 
 export default function PortfolioOverview({ summary, loading }: Props) {
-    const currency = summary?.base_currency ?? "EUR";
-
-    const formatCurrency = (value: number) =>
-        new Intl.NumberFormat("en-IE", {
-            style: "currency",
-            currency,
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2,
-        }).format(value);
 
     return (
         <section className="w-full rounded-md bg-transparent border border-surface p-5">
@@ -43,22 +35,22 @@ export default function PortfolioOverview({ summary, loading }: Props) {
                     <div className="grid gap-3 sm:grid-cols-2">
                         <article className="rounded-md bg-transparent border border-surface p-4">
                             <p className="text-xs uppercase tracking-[0.16em] text-neutral-400">Total Value</p>
-                            <p className="mt-2 text-2xl font-black text-white">{formatCurrency(summary.total_value)}</p>
+                            <p className="mt-2 font-numeric text-2xl font-semibold text-white">{eurSmart(summary.total_value)}</p>
                         </article>
 
                         <article className="rounded-md bg-transparent border border-surface p-4">
                             <p className="text-xs uppercase tracking-[0.16em] text-neutral-400">Total Cost</p>
-                            <p className="mt-2 text-2xl font-black text-white">{formatCurrency(summary.total_cost)}</p>
+                            <p className="mt-2 font-numeric text-2xl font-semibold text-white">{eurSmart(summary.total_cost)}</p>
                         </article>
 
                         <article className="rounded-md border bg-transparent border border-surface p-4 sm:col-span-2">
                             <div className="flex items-center justify-between gap-3">
                                 <div>
                                     <p className="text-xs uppercase tracking-[0.16em] text-neutral-400">Total Gain</p>
-                                    <p className="mt-2 text-2xl font-semibold text-[#2dd4bf]">{formatCurrency(summary.total_gain)}</p>
+                                    <p className="mt-2 font-numeric text-2xl font-semibold text-[#2dd4bf]">{eurSmart(summary.total_gain)}</p>
                                 </div>
                                 <span className="rounded-full border bg-[#14b8a6]/10 px-4 py-2 text-sm font-semibold text-[#2dd4bf]">
-                                    {(summary.total_gain_percent * 100).toFixed(2)}%
+                                    <span className="font-numeric">{(summary.total_gain_percent * 100).toFixed(2)}%</span>
                                 </span>
                             </div>
                         </article>

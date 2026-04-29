@@ -16,3 +16,7 @@ export const compactEur = new Intl.NumberFormat("en-IE", {
 export function formatPercent(value: number) {
   return `${value >= 0 ? "+" : ""}${(value * 100).toFixed(2)}%`;
 }
+
+export function eurSmart(value: number): string {
+  return Math.abs(value) >= 10_000 ? compactEur.format(value) : eur.format(value);
+}

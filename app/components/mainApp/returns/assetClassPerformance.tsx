@@ -35,10 +35,10 @@ export default function AssetClassPerformance({ rows }: AssetClassPerformancePro
             {rows.map((row) => (
               <tr key={row.period} className="border-t text-neutral-200">
                 <td className="px-4 py-3 font-semibold text-white">{row.period}</td>
-                <td className="px-4 py-3">{compactEur.format(row.stocks)}</td>
-                <td className="px-4 py-3">{compactEur.format(row.index)}</td>
-                <td className="px-4 py-3">{compactEur.format(row.crypto)}</td>
-                <td className="px-4 py-3">{compactEur.format(row.fixedIncome)}</td>
+                <td className="font-numeric px-4 py-3">{compactEur.format(row.stocks)}</td>
+                <td className="font-numeric px-4 py-3">{compactEur.format(row.index)}</td>
+                <td className="font-numeric px-4 py-3">{compactEur.format(row.crypto)}</td>
+                <td className="font-numeric px-4 py-3">{compactEur.format(row.fixedIncome)}</td>
               </tr>
             ))}
           </tbody>

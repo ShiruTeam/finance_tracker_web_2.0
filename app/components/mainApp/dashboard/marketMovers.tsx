@@ -32,7 +32,7 @@ export default function MarketMovers({ positions, loading }: Props) {
               {gainers.map((row) => (
                 <li key={row.ticker} className="flex items-center justify-between text-sm text-white">
                   <span>{row.ticker}</span>
-                  <span className="font-semibold text-[#2dd4bf]">+{(row.change * 100).toFixed(2)}%</span>
+                  <span className="font-numeric font-semibold text-[#2dd4bf]">+{(row.change * 100).toFixed(2)}%</span>
                 </li>
               ))}
             </ul>
@@ -43,7 +43,7 @@ export default function MarketMovers({ positions, loading }: Props) {
               {losers.map((row) => (
                 <li key={row.ticker} className="flex items-center justify-between text-sm text-white">
                   <span>{row.ticker}</span>
-                  <span className="font-semibold text-rose-300">{(row.change * 100).toFixed(2)}%</span>
+                  <span className="font-numeric font-semibold text-rose-300">{(row.change * 100).toFixed(2)}%</span>
                 </li>
               ))}
             </ul>

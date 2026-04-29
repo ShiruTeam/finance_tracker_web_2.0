@@ -46,6 +46,7 @@ export default function AppRouter() {
       />
       <Route element={<MainAppLayout />}>
         <Route path="/mainApp" element={<MainAppPage />} />
+        <Route path="/mainApp/dashboard" element={<DashboardPage />} />
         <Route path="/mainApp/positions" element={<PositionsPage />} />
         <Route path="/mainApp/transactions" element={<TransactionsPage />} />
         <Route path="/mainApp/analytics/performance" element={<AnalyticsPerformancePage />} />

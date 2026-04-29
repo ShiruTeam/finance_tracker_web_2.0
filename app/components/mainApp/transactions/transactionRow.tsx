@@ -24,10 +24,10 @@ export default function TransactionRow({ transaction }: TransactionRowProps) {
           {transaction.trade_type}
         </span>
       </td>
-      <td className="px-4 py-3">{transaction.quantity}</td>
-      <td className="px-4 py-3">{eur.format(transaction.price)}</td>
-      <td className="px-4 py-3">{eur.format(transaction.commission)}</td>
-      <td className="px-4 py-3 font-semibold text-white">{eur.format(transaction.total)}</td>
+      <td className="font-numeric px-4 py-3">{transaction.quantity}</td>
+      <td className="font-numeric px-4 py-3">{eur.format(transaction.price)}</td>
+      <td className="font-numeric px-4 py-3">{eur.format(transaction.commission)}</td>
+      <td className="font-numeric px-4 py-3 font-semibold text-white">{eur.format(transaction.total)}</td>
       <td className="px-4 py-3 text-xs text-neutral-400">{transaction.notes ?? "-"}</td>
     </tr>
   );
