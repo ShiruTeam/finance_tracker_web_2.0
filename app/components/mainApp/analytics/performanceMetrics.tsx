@@ -1,4 +1,4 @@
-import { formatPercent } from "@/app/components/mainApp/mock/format";
+import { formatPercent } from "@/components/mainApp/mock/format";
 
 type PerformanceMetricsProps = {
   metrics: {

@@ -1,37 +1,13 @@
-"use client";
 
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { FormEvent, useMemo, useState } from "react";
-import { useRouter } from "next/navigation";
-import { useAuth } from "@/app/hooks/api/useAuth";
-import Image from "next/image";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/hooks/api/useAuth";
+import Image from "@/components/Image";
 import { GoogleLogin } from "@react-oauth/google";
 
-function GoogleIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4">
-      <path
-        d="M23.5 12.27c0-.82-.07-1.61-.22-2.36H12v4.48h6.44a5.5 5.5 0 0 1-2.39 3.62v3h3.87c2.26-2.08 3.58-5.16 3.58-8.74z"
-        fill="#4285F4"
-      />
-      <path
-        d="M12 24c3.24 0 5.96-1.08 7.95-2.92l-3.87-3c-1.08.72-2.46 1.14-4.08 1.14-3.14 0-5.8-2.12-6.75-4.96H1.25v3.1A12 12 0 0 0 12 24z"
-        fill="#34A853"
-      />
-      <path
-        d="M5.25 14.26A7.2 7.2 0 0 1 4.88 12c0-.78.14-1.53.37-2.26v-3.1H1.25A12 12 0 0 0 0 12c0 1.94.46 3.77 1.25 5.36l4-3.1z"
-        fill="#FBBC05"
-      />
-      <path
-        d="M12 4.77c1.76 0 3.34.6 4.59 1.76l3.44-3.44C17.95 1.12 15.23 0 12 0A12 12 0 0 0 1.25 6.64l4 3.1c.95-2.84 3.61-4.97 6.75-4.97z"
-        fill="#EA4335"
-      />
-    </svg>
-  );
-}
-
 export default function RegisterView() {
-  const router = useRouter();
+  const navigate = useNavigate();
   const { register, registerWithGoogle, authError, clearAuthError } = useAuth();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [name, setName] = useState("");
@@ -40,6 +16,7 @@ export default function RegisterView() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [localError, setLocalError] = useState<string | null>(null);
+  const [googleError, setGoogleError] = useState<string | null>(null);
 
   const passwordMismatch = useMemo(
     () => confirmPassword.length > 0 && password !== confirmPassword,
@@ -63,7 +40,7 @@ export default function RegisterView() {
     setIsSubmitting(true);
     try {
       await register({ email, password, name });
-      router.push("/onboarding");
+      navigate("/onboarding");
     } finally {
       setIsSubmitting(false);
     }
@@ -125,20 +102,26 @@ export default function RegisterView() {
               </p>
             </div>
 
+            {googleError ? (
+              <p className="mb-3 rounded-xl border border-rose-400/35 bg-rose-500/10 px-3 py-2 text-sm text-rose-200">
+                {googleError}
+              </p>
+            ) : null}
             <div className="flex w-full justify-center">
               <GoogleLogin
                 onSuccess={async (credentialResponse) => {
+                  setGoogleError(null);
                   if (credentialResponse.credential) {
                     try {
                       await registerWithGoogle(credentialResponse.credential);
-                      router.push("/onboarding");
-                    } catch (error) {
-                      console.error("Google sign-in failed:", error);
+                      navigate("/onboarding");
+                    } catch {
+                      // authError is set in context and shown below
                     }
                   }
                 }}
                 onError={() => {
-                  console.error("Google Login Failed");
+                  setGoogleError("Google sign-in failed. Make sure pop-ups are allowed and try again.");
                 }}
                 theme="filled_black"
                 shape="rectangular"
@@ -259,7 +242,7 @@ export default function RegisterView() {
                 <span>
                   I agree to the{" "}
                   <Link
-                    href="/legal/terms"
+                    to="/legal/terms"
                     className="font-semibold text-[#FFB95D] hover:text-[#ffd39a]"
                   >
                     Terms and Conditions
@@ -279,7 +262,7 @@ export default function RegisterView() {
               <p className="pt-2 text-center text-sm text-white/70">
                 Already have an account?{" "}
                 <Link
-                  href="/auth/login"
+                  to="/auth/login"
                   className="font-semibold text-[#FFB95D] transition hover:text-[#ffd39a]"
                 >
                   Log in

@@ -49,16 +49,16 @@ type RequestOptions = {
   query?: Record<string, string | number | boolean | undefined>;
 };
 
-const envApiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL?.trim();
+const envApiBaseUrl = import.meta.env.VITE_API_BASE_URL?.trim();
 
 if (!envApiBaseUrl) {
-  throw new Error("Missing required env var NEXT_PUBLIC_API_BASE_URL");
+  throw new Error("Missing required env var VITE_API_BASE_URL");
 }
 
 const DEFAULT_BASE_URL = envApiBaseUrl;
 
 function buildGoogleAuthUrl(mode: "login" | "register"): string {
-  const configuredUrl = process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL?.trim();
+  const configuredUrl = import.meta.env.VITE_GOOGLE_AUTH_URL?.trim();
   const baseUrl = configuredUrl && configuredUrl.length > 0 ? configuredUrl : `${DEFAULT_BASE_URL}/api/auth/google`;
 
   const separator = baseUrl.includes("?") ? "&" : "?";

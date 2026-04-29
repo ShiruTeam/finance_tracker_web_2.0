@@ -1,4 +1,4 @@
-import type { AssetType } from "@/app/components/mainApp/positions/types";
+import type { AssetType } from "@/components/mainApp/positions/types";
 
 export type TransactionViewModel = {
   id: number;

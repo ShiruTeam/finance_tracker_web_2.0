@@ -1,5 +1,5 @@
-import type { TransactionViewModel } from "@/app/components/mainApp/transactions/types";
-import TransactionRow from "@/app/components/mainApp/transactions/transactionRow";
+import type { TransactionViewModel } from "@/components/mainApp/transactions/types";
+import TransactionRow from "@/components/mainApp/transactions/transactionRow";
 
 type TransactionsTableProps = {
   rows: TransactionViewModel[];

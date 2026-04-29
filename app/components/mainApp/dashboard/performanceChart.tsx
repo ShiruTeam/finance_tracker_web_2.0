@@ -1,8 +1,7 @@
-"use client";
 
 import { useEffect, useMemo, useState } from "react";
 import type { PortfolioSnapshot } from "@/lib/api/types";
-import TradingViewChart from "@/app/components/mainApp/charts/tradingViewChart";
+import TradingViewChart from "@/components/mainApp/charts/tradingViewChart";
 
 type Props = {
   snapshots30D: PortfolioSnapshot[];

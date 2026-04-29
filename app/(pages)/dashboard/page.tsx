@@ -1,20 +1,19 @@
-"use client";
 
 import { useCallback, useEffect, useState } from "react";
-import PortfolioOverview from "@/app/components/mainApp/dashboard/portfolioOverview";
-import AssetAllocationChart from "@/app/components/mainApp/dashboard/assetAllocationChart";
-import PerformanceChart from "@/app/components/mainApp/dashboard/performanceChart";
-import TopPositionsTable from "@/app/components/mainApp/dashboard/topPositionsTable";
-import PerformanceMetricsGrid from "@/app/components/mainApp/dashboard/performanceMetricsGrid";
-import RecentActivityFeed from "@/app/components/mainApp/dashboard/recentActivityFeed";
-import MarketMovers from "@/app/components/mainApp/dashboard/marketMovers";
-import AssetTypePerformanceBars from "@/app/components/mainApp/dashboard/assetTypePerformanceBars";
-import QuickStatsRow from "@/app/components/mainApp/dashboard/quickStatsRow";
-import PortfolioSelector from "@/app/components/mainApp/dashboard/portfolioSelector";
-import BenchmarkComparisonCard from "@/app/components/mainApp/dashboard/benchmarkComparisonCard";
-import AllocationBreakdownTable from "@/app/components/mainApp/dashboard/allocationBreakdownTable";
-import { usePortfolio } from "@/app/components/mainApp/portfolioContext";
-import { useAuth } from "@/app/hooks/api/useAuth";
+import PortfolioOverview from "@/components/mainApp/dashboard/portfolioOverview";
+import AssetAllocationChart from "@/components/mainApp/dashboard/assetAllocationChart";
+import PerformanceChart from "@/components/mainApp/dashboard/performanceChart";
+import TopPositionsTable from "@/components/mainApp/dashboard/topPositionsTable";
+import PerformanceMetricsGrid from "@/components/mainApp/dashboard/performanceMetricsGrid";
+import RecentActivityFeed from "@/components/mainApp/dashboard/recentActivityFeed";
+import MarketMovers from "@/components/mainApp/dashboard/marketMovers";
+import AssetTypePerformanceBars from "@/components/mainApp/dashboard/assetTypePerformanceBars";
+import QuickStatsRow from "@/components/mainApp/dashboard/quickStatsRow";
+import PortfolioSelector from "@/components/mainApp/dashboard/portfolioSelector";
+import BenchmarkComparisonCard from "@/components/mainApp/dashboard/benchmarkComparisonCard";
+import AllocationBreakdownTable from "@/components/mainApp/dashboard/allocationBreakdownTable";
+import { usePortfolio } from "@/components/mainApp/portfolioContext";
+import { useAuth } from "@/hooks/api/useAuth";
 import { apiClient } from "@/lib/api/client";
 import type {
   BenchmarkComparison,

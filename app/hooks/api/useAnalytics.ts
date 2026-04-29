@@ -8,7 +8,7 @@ import type {
   PortfolioSnapshot,
   QueryRange,
 } from "@/lib/api/types";
-import { useAuth } from "@/app/hooks/api/useAuth";
+import { useAuth } from "@/hooks/api/useAuth";
 
 type AnalyticsState = {
   snapshots: PortfolioSnapshot[];

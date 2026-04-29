@@ -1,12 +1,11 @@
-"use client";
 
 import { FormEvent, useCallback, useEffect, useMemo, useState } from "react";
-import AssetTypeFilter from "@/app/components/mainApp/positions/assetTypeFilter";
-import PositionsList from "@/app/components/mainApp/positions/positionsList";
-import PositionsSummary from "@/app/components/mainApp/positions/positionsSummary";
-import { usePortfolio } from "@/app/components/mainApp/portfolioContext";
-import type { AssetType, PositionViewModel } from "@/app/components/mainApp/positions/types";
-import { usePositions } from "@/app/hooks/api/usePositions";
+import AssetTypeFilter from "@/components/mainApp/positions/assetTypeFilter";
+import PositionsList from "@/components/mainApp/positions/positionsList";
+import PositionsSummary from "@/components/mainApp/positions/positionsSummary";
+import { usePortfolio } from "@/components/mainApp/portfolioContext";
+import type { AssetType, PositionViewModel } from "@/components/mainApp/positions/types";
+import { usePositions } from "@/hooks/api/usePositions";
 
 const OPTIONS = ["All", "Stocks", "Index Fund", "Crypto", "Fixed Income", "Gold", "Cash", "Other"] as const;
 const ASSET_TYPES = ["Stocks", "Index Fund", "Crypto", "Fixed Income", "Gold", "Cash", "Other"] as const;

@@ -1,7 +1,6 @@
-"use client";
 
-import Image from "next/image";
-import Link from "next/link";
+import Image from "@/components/Image";
+import { Link } from "react-router-dom";
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
@@ -410,7 +409,7 @@ export default function LandingHeroClient({
         })}
       </p>
 
-      <Link href="/auth/login" className="w-full flex justify-center">
+      <Link to="/auth/login" className="w-full flex justify-center">
         <span className="absolute bottom-8 z-20 rounded-full border-4 border-white/50 p-5 transition-colors hover:border-[#FFB95D] hover:text-[#FFB95D]">
           <p className="text-lg text-white/80 font-black">Get Started</p>
         </span>

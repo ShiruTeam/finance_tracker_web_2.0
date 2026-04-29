@@ -1,4 +1,4 @@
-import BenchmarksView from "@/app/components/mainApp/benchmarks/benchmarksView";
+import BenchmarksView from "@/components/mainApp/benchmarks/benchmarksView";
 
 export default function AnalyticsBenchmarksPage() {
   return <BenchmarksView />;

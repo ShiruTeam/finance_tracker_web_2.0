@@ -1,4 +1,4 @@
-import type { TransactionFiltersState } from "@/app/components/mainApp/transactions/types";
+import type { TransactionFiltersState } from "@/components/mainApp/transactions/types";
 
 type TransactionFiltersProps = {
   filters: TransactionFiltersState;

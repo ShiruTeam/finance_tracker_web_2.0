@@ -1,23 +1,18 @@
-"use client";
 
-import { useSearchParams } from "next/navigation";
-import dynamic from "next/dynamic";
-import PositionsView from "@/app/components/mainApp/positions/positionsView";
-import TransactionsView from "@/app/components/mainApp/transactions/transactionsView";
-import AnalyticsView from "@/app/components/mainApp/analytics/analyticsView";
-import BenchmarksView from "@/app/components/mainApp/benchmarks/benchmarksView";
-import TaxView from "@/app/components/mainApp/tax/taxView";
-import HistoricReturnsView from "@/app/components/mainApp/returns/historicReturnsView";
-import SettingsView from "@/app/components/mainApp/settings/settingsView";
-
-const Dashboard = dynamic(() => import("../dashboard/page"), {
-  ssr: false,
-});
+import { useSearchParams } from "react-router-dom";
+import DashboardPage from "../dashboard/page";
+import PositionsView from "@/components/mainApp/positions/positionsView";
+import TransactionsView from "@/components/mainApp/transactions/transactionsView";
+import AnalyticsView from "@/components/mainApp/analytics/analyticsView";
+import BenchmarksView from "@/components/mainApp/benchmarks/benchmarksView";
+import TaxView from "@/components/mainApp/tax/taxView";
+import HistoricReturnsView from "@/components/mainApp/returns/historicReturnsView";
+import SettingsView from "@/components/mainApp/settings/settingsView";
 
 function renderView(view: string) {
   switch (view) {
     case "dashboard":
-      return <Dashboard />;
+      return <DashboardPage />;
     case "positions":
       return <PositionsView />;
     case "transactions":
@@ -33,12 +28,12 @@ function renderView(view: string) {
     case "settings":
       return <SettingsView />;
     default:
-      return <Dashboard />;
+      return <DashboardPage />;
   }
 }
 
 export default function MainAppPage() {
-  const searchParams = useSearchParams();
+  const [searchParams] = useSearchParams();
   const view = searchParams.get("view") ?? "dashboard";
 
   return (

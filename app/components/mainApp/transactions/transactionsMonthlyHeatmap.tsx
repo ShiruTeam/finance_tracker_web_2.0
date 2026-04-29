@@ -1,5 +1,5 @@
-import type { TransactionViewModel } from "@/app/components/mainApp/transactions/types";
-import { eur } from "@/app/components/mainApp/mock/format";
+import type { TransactionViewModel } from "@/components/mainApp/transactions/types";
+import { eur } from "@/components/mainApp/mock/format";
 
 type TransactionsMonthlyHeatmapProps = {
   rows: TransactionViewModel[];

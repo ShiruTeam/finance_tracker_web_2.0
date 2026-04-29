@@ -1,4 +1,3 @@
-import { Main } from 'next/document';
 import type { Config } from 'tailwindcss';
 
 const config: Config = {

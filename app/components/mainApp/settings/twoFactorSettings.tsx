@@ -1,7 +1,6 @@
-"use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import Image from "next/image";
+import Image from "@/components/Image";
 import { apiClient } from "@/lib/api/client";
 import type { TwoFactorSetupResponse } from "@/lib/api/types";
 

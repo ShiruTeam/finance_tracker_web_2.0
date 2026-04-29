@@ -1,24 +1,20 @@
-"use client";
 
-import NavBar from "@/app/components/navBar";
-import { PortfolioProvider } from "@/app/components/mainApp/portfolioContext";
-import { useAuth } from "@/app/hooks/api/useAuth";
-import { useRouter } from "next/navigation";
+import { Outlet } from "react-router-dom";
+import NavBar from "@/components/navBar";
+import { PortfolioProvider } from "@/components/mainApp/portfolioContext";
+import { useAuth } from "@/hooks/api/useAuth";
+import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
-export default function MainAppLayout({
-    children}
-  : {
-    children: React.ReactNode;
-  }) {
+export default function MainAppLayout() {
     const { isHydrated, isAuthenticated } = useAuth();
-    const router = useRouter();
+    const navigate = useNavigate();
 
     useEffect(() => {
       if (isHydrated && !isAuthenticated) {
-        router.replace("/");
+        navigate("/");
       }
-    }, [isHydrated, isAuthenticated, router]);
+    }, [isHydrated, isAuthenticated, navigate]);
 
     if (!isHydrated || !isAuthenticated) {
       return (
@@ -32,8 +28,8 @@ export default function MainAppLayout({
         <PortfolioProvider>
           <main className="flex h-screen w-full bg-mainapp">
             <NavBar />
-            {children}
+            <Outlet />
           </main>
         </PortfolioProvider>
-    )
+    );
   }

@@ -1,14 +1,13 @@
-"use client";
 
 import { useEffect, useMemo, useState } from "react";
-import BenchmarkSelector from "@/app/components/mainApp/benchmarks/benchmarkSelector";
-import ComparisonChart from "@/app/components/mainApp/benchmarks/comparisonChart";
-import ComparisonMetrics from "@/app/components/mainApp/benchmarks/comparisonMetrics";
-import AlphaBetaExplanation from "@/app/components/mainApp/benchmarks/alphaBetaExplanation";
-import RiskMetricsTable from "@/app/components/mainApp/benchmarks/riskMetricsTable";
-import { usePortfolio } from "@/app/components/mainApp/portfolioContext";
-import { useAnalytics } from "@/app/hooks/api/useAnalytics";
-import { formatPercent } from "@/app/components/mainApp/mock/format";
+import BenchmarkSelector from "@/components/mainApp/benchmarks/benchmarkSelector";
+import ComparisonChart from "@/components/mainApp/benchmarks/comparisonChart";
+import ComparisonMetrics from "@/components/mainApp/benchmarks/comparisonMetrics";
+import AlphaBetaExplanation from "@/components/mainApp/benchmarks/alphaBetaExplanation";
+import RiskMetricsTable from "@/components/mainApp/benchmarks/riskMetricsTable";
+import { usePortfolio } from "@/components/mainApp/portfolioContext";
+import { useAnalytics } from "@/hooks/api/useAnalytics";
+import { formatPercent } from "@/components/mainApp/mock/format";
 
 const benchmarkOptions = [
   { symbol: "SPY", name: "S&P 500" },

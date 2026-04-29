@@ -1,6 +1,6 @@
 "use client";
 
-import { useAuthContext } from "@/app/context/authContext";
+import { useAuthContext } from "@/context/authContext";
 
 export function useAuth() {
   return useAuthContext();

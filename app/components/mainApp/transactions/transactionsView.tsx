@@ -1,15 +1,14 @@
-"use client";
 
 import { FormEvent, useCallback, useEffect, useMemo, useState } from "react";
-import TransactionsTable from "@/app/components/mainApp/transactions/transactionsTable";
-import TransactionFilters from "@/app/components/mainApp/transactions/transactionFilters";
-import TransactionStats from "@/app/components/mainApp/transactions/transactionStats";
-import TransactionsMonthlyHeatmap from "@/app/components/mainApp/transactions/transactionsMonthlyHeatmap";
-import { usePortfolio } from "@/app/components/mainApp/portfolioContext";
-import type { AssetType } from "@/app/components/mainApp/positions/types";
-import type { TransactionFiltersState, TransactionViewModel } from "@/app/components/mainApp/transactions/types";
-import { useTransactions } from "@/app/hooks/api/useTransactions";
-import { useIbkrConnections } from "@/app/hooks/api/useIbkrConnections";
+import TransactionsTable from "@/components/mainApp/transactions/transactionsTable";
+import TransactionFilters from "@/components/mainApp/transactions/transactionFilters";
+import TransactionStats from "@/components/mainApp/transactions/transactionStats";
+import TransactionsMonthlyHeatmap from "@/components/mainApp/transactions/transactionsMonthlyHeatmap";
+import { usePortfolio } from "@/components/mainApp/portfolioContext";
+import type { AssetType } from "@/components/mainApp/positions/types";
+import type { TransactionFiltersState, TransactionViewModel } from "@/components/mainApp/transactions/types";
+import { useTransactions } from "@/hooks/api/useTransactions";
+import { useIbkrConnections } from "@/hooks/api/useIbkrConnections";
 
 const ASSET_TYPES = ["Stocks", "Index Fund", "Crypto", "Fixed Income", "Gold", "Cash", "Other"] as const;
 

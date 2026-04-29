@@ -1,5 +1,5 @@
-import type { PositionViewModel } from "@/app/components/mainApp/positions/types";
-import PositionCard from "@/app/components/mainApp/positions/positionCard";
+import type { PositionViewModel } from "@/components/mainApp/positions/types";
+import PositionCard from "@/components/mainApp/positions/positionCard";
 
 type PositionsListProps = {
   positions: PositionViewModel[];

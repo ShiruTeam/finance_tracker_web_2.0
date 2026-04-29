@@ -1,5 +1,5 @@
 import type { PositionWithMetrics } from "@/lib/api/types";
-import { Skeleton } from "@/app/components/ui/skeleton";
+import { Skeleton } from "@/components/ui/skeleton";
 
 type Props = {
   positions: PositionWithMetrics[];

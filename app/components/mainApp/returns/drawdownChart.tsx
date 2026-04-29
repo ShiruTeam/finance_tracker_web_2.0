@@ -1,5 +1,5 @@
-import { formatPercent } from "@/app/components/mainApp/mock/format";
-import TradingViewChart from "@/app/components/mainApp/charts/tradingViewChart";
+import { formatPercent } from "@/components/mainApp/mock/format";
+import TradingViewChart from "@/components/mainApp/charts/tradingViewChart";
 
 type Row = {
   period: string;

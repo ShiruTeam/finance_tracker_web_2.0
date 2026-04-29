@@ -1,9 +1,8 @@
-"use client";
 
 import { FormEvent, useState } from "react";
-import { useRouter } from "next/navigation";
-import Image from "next/image";
-import { useAuth } from "@/app/hooks/api/useAuth";
+import { useNavigate } from "react-router-dom";
+import Image from "@/components/Image";
+import { useAuth } from "@/hooks/api/useAuth";
 import { apiClient } from "@/lib/api/client";
 import { TrendingUp, DollarSign, Zap, BarChart2, ChevronRight, CheckCircle } from "lucide-react";
 
@@ -56,7 +55,7 @@ function StepIndicator({ current, total }: { current: number; total: number }) {
 }
 
 export default function OnboardingPage() {
-  const router = useRouter();
+  const navigate = useNavigate();
   const { token, user } = useAuth();
   const [step, setStep] = useState(0);
   const [selectedGoal, setSelectedGoal] = useState<string | null>(null);
@@ -102,7 +101,7 @@ export default function OnboardingPage() {
             <p className="text-sm font-medium text-neutral-400">
               Welcome{user?.name ? `, ${user.name.split(" ")[0]}` : ""}
             </p>
-            <h1 className="mt-1 text-3xl font-black text-white">What's your investing goal?</h1>
+            <h1 className="mt-1 text-3xl font-black text-white">What&apos;s your investing goal?</h1>
             <p className="mt-2 text-sm text-neutral-500">
               This helps us set up your workspace. You can always change it later.
             </p>
@@ -214,7 +213,7 @@ export default function OnboardingPage() {
             <div className="mb-6 flex justify-center text-white">
               <CheckCircle size={48} strokeWidth={1.5} />
             </div>
-            <h1 className="text-3xl font-black text-white">You're all set</h1>
+            <h1 className="text-3xl font-black text-white">You&apos;re all set</h1>
             <p className="mt-3 text-sm text-neutral-400">
               <span className="font-semibold text-white">{createdName}</span> has been created.
               Start adding positions and tracking your returns.
@@ -223,14 +222,14 @@ export default function OnboardingPage() {
             <div className="mt-8 flex flex-col gap-3">
               <button
                 type="button"
-                onClick={() => router.push("/mainApp?view=dashboard")}
+                onClick={() => navigate("/mainApp?view=dashboard")}
                 className="flex w-full items-center justify-center gap-2 rounded-sm bg-white px-4 py-3 text-sm font-semibold text-black transition hover:bg-neutral-200"
               >
                 Go to Dashboard <ChevronRight size={16} />
               </button>
               <button
                 type="button"
-                onClick={() => router.push("/mainApp/positions")}
+                onClick={() => navigate("/mainApp/positions")}
                 className="rounded-sm border border-surface px-4 py-3 text-sm font-medium text-neutral-400 hover:text-white transition-colors"
               >
                 Add my first position

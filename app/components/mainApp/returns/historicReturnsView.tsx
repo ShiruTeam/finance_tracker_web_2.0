@@ -1,15 +1,14 @@
-"use client";
 
 import { useCallback, useEffect, useState } from "react";
-import ReturnsPeriodSelector from "@/app/components/mainApp/returns/returnsPeriodSelector";
-import CumulativeReturnsChart from "@/app/components/mainApp/returns/cumulativeReturnsChart";
-import MonthlyReturnsGrid from "@/app/components/mainApp/returns/monthlyReturnsGrid";
-import ContributionsTracker from "@/app/components/mainApp/returns/contributionsTracker";
-import AssetClassPerformance from "@/app/components/mainApp/returns/assetClassPerformance";
-import DrawdownChart from "@/app/components/mainApp/returns/drawdownChart";
-import { usePortfolio } from "@/app/components/mainApp/portfolioContext";
-import { useAnalytics } from "@/app/hooks/api/useAnalytics";
-import { usePositions } from "@/app/hooks/api/usePositions";
+import ReturnsPeriodSelector from "@/components/mainApp/returns/returnsPeriodSelector";
+import CumulativeReturnsChart from "@/components/mainApp/returns/cumulativeReturnsChart";
+import MonthlyReturnsGrid from "@/components/mainApp/returns/monthlyReturnsGrid";
+import ContributionsTracker from "@/components/mainApp/returns/contributionsTracker";
+import AssetClassPerformance from "@/components/mainApp/returns/assetClassPerformance";
+import DrawdownChart from "@/components/mainApp/returns/drawdownChart";
+import { usePortfolio } from "@/components/mainApp/portfolioContext";
+import { useAnalytics } from "@/hooks/api/useAnalytics";
+import { usePositions } from "@/hooks/api/usePositions";
 import type { PortfolioSnapshot } from "@/lib/api/types";
 
 function isoToLabel(date: string) {

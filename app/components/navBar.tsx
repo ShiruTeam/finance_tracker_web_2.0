@@ -1,9 +1,7 @@
-"use client";
 
-import Link from "next/link";
-import Image from "next/image";
-import { useRouter, usePathname, useSearchParams } from "next/navigation";
-import { useAuth } from "@/app/hooks/api/useAuth";
+import { Link, useNavigate, useLocation, useSearchParams } from "react-router-dom";
+import Image from "@/components/Image";
+import { useAuth } from "@/hooks/api/useAuth";
 import {
     LayoutDashboard,
     TrendingUp,
@@ -65,9 +63,9 @@ const bottomItems = [
 ];
 
 export default function NavBar() {
-    const router = useRouter();
-    const pathname = usePathname();
-    const searchParams = useSearchParams();
+    const navigate = useNavigate();
+    const { pathname } = useLocation();
+    const [searchParams] = useSearchParams();
     const { logout } = useAuth();
 
     function isActive(href: string): boolean {
@@ -84,7 +82,7 @@ export default function NavBar() {
 
     function handleLogout() {
         logout();
-        router.push("/auth/login");
+        navigate("/auth/login");
     }
 
     return (
@@ -108,7 +106,7 @@ export default function NavBar() {
                                             {item.children.map((child) => (
                                                 <li key={child.label}>
                                                     <Link
-                                                        href={child.href}
+                                                        to={child.href}
                                                         className={`${baseClass} ${isActive(child.href) ? activeClass : ""}`}
                                                     >
                                                         {child.icon}
@@ -125,7 +123,7 @@ export default function NavBar() {
                         return (
                             <li key={item.label}>
                                 <Link
-                                    href={item.href}
+                                    to={item.href}
                                     className={`${baseClass} font-semibold ${isActive(item.href) ? activeClass : ""}`}
                                 >
                                     {item.icon}
@@ -140,7 +138,7 @@ export default function NavBar() {
                 <ul className="mx-4 mb-6 flex flex-col gap-1">
                     {bottomItems.map((item) => (
                         <li key={item.label}>
-                            <Link href={item.href} className={`${baseClass} ${isActive(item.href) ? activeClass : ""}`}>
+                            <Link to={item.href} className={`${baseClass} ${isActive(item.href) ? activeClass : ""}`}>
                                 {item.icon}
                                 {item.label}
                             </Link>

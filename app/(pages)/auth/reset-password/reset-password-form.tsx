@@ -1,8 +1,7 @@
-"use client";
 
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { FormEvent, useMemo, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { apiClient } from "@/lib/api/client";
 
 function getErrorMessage(error: unknown): string {
@@ -13,8 +12,8 @@ function getErrorMessage(error: unknown): string {
 }
 
 export default function ResetPasswordForm() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const token = useMemo(() => searchParams.get("token")?.trim() ?? "", [searchParams]);
 
   const [newPassword, setNewPassword] = useState("");
@@ -49,7 +48,7 @@ export default function ResetPasswordForm() {
 
       setSuccessMessage(response.message ?? response.status ?? "Password reset successful. Redirecting to login...");
       window.setTimeout(() => {
-        router.push("/auth/login");
+        navigate("/auth/login");
       }, 1200);
     } catch (err) {
       setError(getErrorMessage(err));
@@ -121,7 +120,7 @@ export default function ResetPasswordForm() {
 
       <p className="pt-2 text-center text-sm text-white/70">
         Back to{" "}
-        <Link href="/auth/login" className="font-semibold text-[#FFB95D] transition hover:text-[#ffd39a]">
+        <Link to="/auth/login" className="font-semibold text-[#FFB95D] transition hover:text-[#ffd39a]">
           Log in
         </Link>
       </p>

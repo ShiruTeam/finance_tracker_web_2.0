@@ -1,7 +1,6 @@
-"use client";
 
 import type { PositionWithMetrics } from "@/lib/api/types";
-import { usePortfolio } from "@/app/components/mainApp/portfolioContext";
+import { usePortfolio } from "@/components/mainApp/portfolioContext";
 
 type Row = {
   label: string;

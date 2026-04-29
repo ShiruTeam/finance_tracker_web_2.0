@@ -1,7 +1,6 @@
-"use client";
 
-import Image from "next/image";
-import Link from "next/link";
+import Image from "@/components/Image";
+import { Link } from "react-router-dom";
 import { FormEvent, useState } from "react";
 import { apiClient } from "@/lib/api/client";
 
@@ -108,7 +107,7 @@ export default function ForgotPasswordPage() {
 
               <p className="pt-2 text-center text-sm text-white/70">
                 Back to{" "}
-                <Link href="/auth/login" className="font-semibold text-[#FFB95D] transition hover:text-[#ffd39a]">
+                <Link to="/auth/login" className="font-semibold text-[#FFB95D] transition hover:text-[#ffd39a]">
                   Log in
                 </Link>
               </p>

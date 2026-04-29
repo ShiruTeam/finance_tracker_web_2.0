@@ -1,4 +1,4 @@
-import { compactEur } from "@/app/components/mainApp/mock/format";
+import { compactEur } from "@/components/mainApp/mock/format";
 
 type Row = {
   period: string;

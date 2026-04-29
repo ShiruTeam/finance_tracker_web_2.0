@@ -1,10 +1,9 @@
-"use client";
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useNavigate, useLocation, useSearchParams } from "react-router-dom";
 import { apiClient } from "@/lib/api/client";
 import type { Portfolio } from "@/lib/api/types";
-import { useAuth } from "@/app/hooks/api/useAuth";
+import { useAuth } from "@/hooks/api/useAuth";
 
 type PortfolioContextValue = {
   selectedPortfolioId: number | null;
@@ -19,9 +18,9 @@ const PortfolioContext = createContext<PortfolioContextValue | null>(null);
 
 export function PortfolioProvider({ children }: { children: React.ReactNode }) {
   const { token } = useAuth();
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
-  const router = useRouter();
+  const [searchParams] = useSearchParams();
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
   const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -36,7 +35,6 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
     setError(null);
     try {
       const fetched = await apiClient.listPortfolios(token);
-      // Defensive: normalize null response to empty array for new accounts
       setPortfolios(fetched ?? []);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Unable to load portfolios.");
@@ -72,9 +70,9 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
     const params = new URLSearchParams(searchParams.toString());
     if (params.get("portfolio") !== String(selectedPortfolioId)) {
       params.set("portfolio", String(selectedPortfolioId));
-      router.replace(`${pathname}?${params.toString()}`);
+      navigate(`${pathname}?${params.toString()}`);
     }
-  }, [selectedPortfolioId, searchParams, pathname, router]);
+  }, [selectedPortfolioId, searchParams, pathname, navigate]);
 
   const value = useMemo(
     () => ({ selectedPortfolioId, setSelectedPortfolioId, portfolios, loading, error, refreshPortfolios }),

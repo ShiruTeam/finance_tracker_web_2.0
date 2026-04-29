@@ -1,14 +1,13 @@
-"use client";
 
 import { useState } from "react";
-import PortfolioSettings from "@/app/components/mainApp/settings/portfolioSettings";
-import NotificationSettings from "@/app/components/mainApp/settings/notificationSettings";
-import DataManagement from "@/app/components/mainApp/settings/dataManagement";
-import IntegrationSettings from "@/app/components/mainApp/settings/integrationSettings";
-import TwoFactorSettings from "@/app/components/mainApp/settings/twoFactorSettings";
-import { usePortfolio } from "@/app/components/mainApp/portfolioContext";
-import { usePortfolios } from "@/app/hooks/api/usePortfolios";
-import { useAuth } from "@/app/hooks/api/useAuth";
+import PortfolioSettings from "@/components/mainApp/settings/portfolioSettings";
+import NotificationSettings from "@/components/mainApp/settings/notificationSettings";
+import DataManagement from "@/components/mainApp/settings/dataManagement";
+import IntegrationSettings from "@/components/mainApp/settings/integrationSettings";
+import TwoFactorSettings from "@/components/mainApp/settings/twoFactorSettings";
+import { usePortfolio } from "@/components/mainApp/portfolioContext";
+import { usePortfolios } from "@/hooks/api/usePortfolios";
+import { useAuth } from "@/hooks/api/useAuth";
 
 const defaultNotifications = {
   dailyPriceUpdate: false,

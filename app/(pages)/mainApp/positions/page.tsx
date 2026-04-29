@@ -1,4 +1,4 @@
-import PositionsView from "@/app/components/mainApp/positions/positionsView";
+import PositionsView from "@/components/mainApp/positions/positionsView";
 
 export default function PositionsPage() {
   return <PositionsView />;

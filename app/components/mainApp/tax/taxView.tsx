@@ -1,15 +1,14 @@
-"use client";
 
 import { useEffect, useMemo, useState } from "react";
-import TaxYearSelector from "@/app/components/mainApp/tax/taxYearSelector";
-import TaxSummary from "@/app/components/mainApp/tax/taxSummary";
-import RealizedGainsTable from "@/app/components/mainApp/tax/realizedGainsTable";
-import UnrealizedGainsTable from "@/app/components/mainApp/tax/unrealizedGainsTable";
-import TaxHarvestingOpportunities from "@/app/components/mainApp/tax/taxHarvestingOpportunities";
-import DividendIncome from "@/app/components/mainApp/tax/dividendIncome";
-import ExportTaxReport from "@/app/components/mainApp/tax/exportTaxReport";
-import { usePortfolio } from "@/app/components/mainApp/portfolioContext";
-import { useTax } from "@/app/hooks/api/useTax";
+import TaxYearSelector from "@/components/mainApp/tax/taxYearSelector";
+import TaxSummary from "@/components/mainApp/tax/taxSummary";
+import RealizedGainsTable from "@/components/mainApp/tax/realizedGainsTable";
+import UnrealizedGainsTable from "@/components/mainApp/tax/unrealizedGainsTable";
+import TaxHarvestingOpportunities from "@/components/mainApp/tax/taxHarvestingOpportunities";
+import DividendIncome from "@/components/mainApp/tax/dividendIncome";
+import ExportTaxReport from "@/components/mainApp/tax/exportTaxReport";
+import { usePortfolio } from "@/components/mainApp/portfolioContext";
+import { useTax } from "@/hooks/api/useTax";
 
 function asNumber(value: unknown) {
   return typeof value === "number" ? value : 0;

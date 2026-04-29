@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "react-router-dom";
 
 const plans = [
   { plan: "Free", price: "$0", features: "1 portfolio, manual sync" },
@@ -35,12 +35,12 @@ export default function TermsPage() {
           </div>
           <div className="flex gap-3">
             <Link
-              href="/auth/register"
+              to="/auth/register"
               className="rounded-full border border-[#FFB95D]/40 bg-[#FFB95D]/10 px-4 py-2 text-sm font-semibold text-[#FFB95D] transition hover:bg-[#FFB95D]/20"
             >
               Back to Register
             </Link>
-            <Link href="/" className="rounded-full border border-white/20 px-4 py-2 text-sm text-white/80 transition hover:border-white/40 hover:text-white">
+            <Link to="/" className="rounded-full border border-white/20 px-4 py-2 text-sm text-white/80 transition hover:border-white/40 hover:text-white">
               Go to Home
             </Link>
           </div>
@@ -50,7 +50,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-xl font-bold text-[#FFB95D]">1. Acceptance of Terms</h2>
             <p className="mt-2">
-              By accessing and using FinanceTracker (the "Service"), you agree to be bound by these Terms and Conditions (the "Terms"). If you do not agree with any part, you may not use the platform.
+              By accessing and using FinanceTracker (the &quot;Service&quot;), you agree to be bound by these Terms and Conditions (the &quot;Terms&quot;). If you do not agree with any part, you may not use the platform.
             </p>
             <p className="mt-2">Effective date: March 30, 2026.</p>
             <p className="mt-1">User since: your registration date.</p>
@@ -151,7 +151,7 @@ export default function TermsPage() {
 
           <section>
             <h2 className="text-xl font-bold text-[#FFB95D]">8. Limitation of Liability</h2>
-            <p className="mt-2 text-white/80">The service is provided "as is" without warranties of total accuracy, uninterrupted availability, or error-free operation.</p>
+            <p className="mt-2 text-white/80">The service is provided &quot;as is&quot; without warranties of total accuracy, uninterrupted availability, or error-free operation.</p>
             <p className="mt-2 text-white/80">We are not liable for direct or indirect losses arising from investment decisions based on the service.</p>
             <ul className="mt-2 list-disc space-y-1 pl-5 text-white/80">
               <li>Free users: maximum liability limit of $0.</li>
@@ -340,7 +340,7 @@ export default function TermsPage() {
           <section className="rounded-2xl border border-[#FFB95D]/30 bg-[#FFB95D]/10 p-5 text-[#ffe8c7]">
             <p className="text-base font-bold">Acceptance</p>
             <p className="mt-2 text-sm sm:text-base">
-              By clicking "Sign up" or using FinanceTracker, you agree to be bound by these Terms and Conditions.
+              By clicking &quot;Sign up&quot; or using FinanceTracker, you agree to be bound by these Terms and Conditions.
             </p>
             <p className="mt-3 text-xs text-[#ffe8c7]/80">Last legal review: March 30, 2026. Next review: June 30, 2026.</p>
           </section>

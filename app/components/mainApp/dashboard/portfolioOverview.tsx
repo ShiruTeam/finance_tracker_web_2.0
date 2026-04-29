@@ -1,6 +1,6 @@
 
 import type { PortfolioSummary } from "@/lib/api/types";
-import { Skeleton, SkeletonCard } from "@/app/components/ui/skeleton";
+import { SkeletonCard } from "@/components/ui/skeleton";
 
 type Props = {
     summary: PortfolioSummary | null;

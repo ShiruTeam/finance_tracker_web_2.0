@@ -1,4 +1,3 @@
-"use client";
 
 import {
   createContext,
@@ -86,34 +85,6 @@ function clearPersistedSession() {
   localStorage.removeItem(STORAGE_USER_KEY);
 }
 
-let isGoogleInitialized = false;
-
-function initializeGoogleSignIn(onSuccess: (idToken: string) => void): void {
-  if (!window.google) {
-    throw new Error("Google Sign-In SDK not loaded");
-  }
-
-  const clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
-  if (!clientId) {
-    throw new Error(
-      "Missing NEXT_PUBLIC_GOOGLE_CLIENT_ID environment variable",
-    );
-  }
-
-  if (!isGoogleInitialized) {
-    window.google.accounts.id.initialize({
-      client_id: clientId,
-      use_fedcm_for_prompt: false, // Bypasses FedCM requirement for local development
-      callback: (response: CredentialResponse) => {
-        if (response.credential) {
-          onSuccess(response.credential);
-        }
-      },
-    });
-    isGoogleInitialized = true;
-  }
-}
-
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [token, setToken] = useState<string | null>(null);
   const [user, setUser] = useState<UserResponse | null>(null);
@@ -121,22 +92,27 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [isHydrated, setIsHydrated] = useState(false);
 
   useEffect(() => {
-    try {
-      const storedToken = localStorage.getItem(STORAGE_TOKEN_KEY);
-      const storedUser = localStorage.getItem(STORAGE_USER_KEY);
-      if (storedToken) {
-        setToken(storedToken);
+    // Load persisted session from localStorage on mount
+    const loadPersistedSession = () => {
+      try {
+        const storedToken = localStorage.getItem(STORAGE_TOKEN_KEY);
+        const storedUser = localStorage.getItem(STORAGE_USER_KEY);
+        if (storedToken) {
+          setToken(storedToken);
+        }
+        if (storedUser) {
+          setUser(JSON.parse(storedUser) as UserResponse);
+        }
+      } catch {
+        clearPersistedSession();
+        setToken(null);
+        setUser(null);
+      } finally {
+        setIsHydrated(true);
       }
-      if (storedUser) {
-        setUser(JSON.parse(storedUser) as UserResponse);
-      }
-    } catch {
-      clearPersistedSession();
-      setToken(null);
-      setUser(null);
-    } finally {
-      setIsHydrated(true);
-    }
+    };
+
+    loadPersistedSession();
   }, []);
 
   const clearAuthError = useCallback(() => setAuthError(null), []);
@@ -157,8 +133,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const login = useCallback(
     async (payload: LoginRequest) => {
-      const devEmail = process.env.NEXT_PUBLIC_DEV_EMAIL;
-      const devPassword = process.env.NEXT_PUBLIC_DEV_PASSWORD;
+      const devEmail = import.meta.env.VITE_DEV_EMAIL;
+      const devPassword = import.meta.env.VITE_DEV_PASSWORD;
       if (
         process.env.NODE_ENV === "development" &&
         devEmail && devPassword &&

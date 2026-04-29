@@ -1,5 +1,5 @@
 import type { PositionWithMetrics } from "@/lib/api/types";
-import { Skeleton } from "@/app/components/ui/skeleton";
+import { Skeleton } from "@/components/ui/skeleton";
 
 type Props = {
   positions?: PositionWithMetrics[];
@@ -26,7 +26,7 @@ const formatCurrency = (value: number) =>
 export default function AssetAllocationChart({ positions = [], loading }: Props) {
   // Derive by asset type from positions
   const byType = positions.reduce(
-    (acc, p, index) => {
+    (acc, p) => {
       if (!acc[p.asset_type]) acc[p.asset_type] = { value: 0, colorIndex: Object.keys(acc).length };
       acc[p.asset_type].value += p.total_value;
       return acc;

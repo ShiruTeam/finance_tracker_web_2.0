@@ -1,4 +1,4 @@
-import { eur, formatPercent } from "@/app/components/mainApp/mock/format";
+import { eur, formatPercent } from "@/components/mainApp/mock/format";
 
 type PositionsSummaryProps = {
   summary: {

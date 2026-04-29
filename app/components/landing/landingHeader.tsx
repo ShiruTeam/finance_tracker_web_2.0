@@ -1,8 +1,7 @@
-"use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
+import Image from "@/components/Image";
+import { Link } from "react-router-dom";
 
 export default function LandingHeader() {
   const [visible, setVisible] = useState(false);
@@ -96,7 +95,7 @@ export default function LandingHeader() {
         <ul className="flex flex-row items-center gap-2 md:gap-3">
           <li>
             <Link
-              href="/auth/login"
+              to="/auth/login"
               className="rounded-full border border-white/25 px-4 py-2 text-sm font-semibold text-white/85 transition hover:border-white/50 hover:text-white"
             >
               Log In
@@ -104,7 +103,7 @@ export default function LandingHeader() {
           </li>
           <li>
             <Link
-              href="/auth/register"
+              to="/auth/register"
               className="rounded-full border border-[#FFB95D]/45 bg-[#FFB95D]/12 px-4 py-2 text-sm font-semibold text-[#FFB95D] transition hover:bg-[#FFB95D]/20"
             >
               Sign Up

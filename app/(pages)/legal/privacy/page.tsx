@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "react-router-dom";
 
 const retentionRows = [
   { type: "Account data", period: "While account is active + 180 days" },
@@ -29,12 +29,12 @@ export default function PrivacyPage() {
           </div>
           <div className="flex gap-3">
             <Link
-              href="/auth/register"
+              to="/auth/register"
               className="rounded-full border border-[#FFB95D]/40 bg-[#FFB95D]/10 px-4 py-2 text-sm font-semibold text-[#FFB95D] transition hover:bg-[#FFB95D]/20"
             >
               Back to Register
             </Link>
-            <Link href="/" className="rounded-full border border-white/20 px-4 py-2 text-sm text-white/80 transition hover:border-white/40 hover:text-white">
+            <Link to="/" className="rounded-full border border-white/20 px-4 py-2 text-sm text-white/80 transition hover:border-white/40 hover:text-white">
               Go to Home
             </Link>
           </div>

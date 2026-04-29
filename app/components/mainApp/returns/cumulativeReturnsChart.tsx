@@ -1,8 +1,7 @@
-"use client";
 
 import { useMemo, useState } from "react";
-import { eur } from "@/app/components/mainApp/mock/format";
-import TradingViewChart from "@/app/components/mainApp/charts/tradingViewChart";
+import { eur } from "@/components/mainApp/mock/format";
+import TradingViewChart from "@/components/mainApp/charts/tradingViewChart";
 
 type Point = {
   period: string;

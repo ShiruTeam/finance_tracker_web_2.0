@@ -1,4 +1,4 @@
-import { eur } from "@/app/components/mainApp/mock/format";
+import { eur } from "@/components/mainApp/mock/format";
 
 type Row = {
   ticker: string;

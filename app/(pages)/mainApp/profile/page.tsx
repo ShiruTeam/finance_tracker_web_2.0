@@ -1,6 +1,5 @@
-"use client";
 
-import { useAuth } from "@/app/hooks/api/useAuth";
+import { useAuth } from "@/hooks/api/useAuth";
 
 export default function ProfilePage() {
   const { user } = useAuth();

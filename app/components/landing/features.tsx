@@ -1,5 +1,4 @@
 
-"use client";
 
 type FeatureItem = {
 	title: string;

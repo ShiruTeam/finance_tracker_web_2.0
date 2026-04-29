@@ -1,7 +1,6 @@
-"use client";
 
-import Image from "next/image";
-import Link from "next/link";
+import Image from "@/components/Image";
+import { Link } from "react-router-dom";
 
 type ShowcaseItem = {
   eyebrow: string;
@@ -127,7 +126,7 @@ export default function AppShowcase() {
         </div>
 
         <Link
-          href="/auth/login"
+          to="/auth/login"
           className="relative w-full flex justify-center py-1 mt-40"
         >
           <span className="absolute bottom-8 z-20 rounded-full border-4 border-white/50 p-5 transition-colors hover:border-[#FFB95D] hover:text-[#FFB95D]">

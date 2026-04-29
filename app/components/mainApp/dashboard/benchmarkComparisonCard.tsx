@@ -1,5 +1,5 @@
 import type { BenchmarkComparison } from "@/lib/api/types";
-import { SkeletonCard } from "@/app/components/ui/skeleton";
+import { SkeletonCard } from "@/components/ui/skeleton";
 
 type Props = {
   comparison: BenchmarkComparison | null;

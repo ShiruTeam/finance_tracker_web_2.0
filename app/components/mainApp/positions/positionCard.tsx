@@ -1,5 +1,5 @@
-import type { PositionViewModel } from "@/app/components/mainApp/positions/types";
-import { eur, formatPercent } from "@/app/components/mainApp/mock/format";
+import type { PositionViewModel } from "@/components/mainApp/positions/types";
+import { eur, formatPercent } from "@/components/mainApp/mock/format";
 
 type PositionCardProps = {
   position: PositionViewModel;

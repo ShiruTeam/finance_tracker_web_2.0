@@ -1,6 +1,5 @@
-"use client";
 
-import { usePortfolio } from "@/app/components/mainApp/portfolioContext";
+import { usePortfolio } from "@/components/mainApp/portfolioContext";
 
 export default function PortfoliosPage() {
   const { selectedPortfolioId, setSelectedPortfolioId, portfolios, loading, error } = usePortfolio();

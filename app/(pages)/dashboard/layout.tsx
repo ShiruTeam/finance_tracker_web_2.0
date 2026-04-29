@@ -1,7 +1,6 @@
-"use client";
 
 import { Suspense } from "react";
-import { PortfolioProvider } from "@/app/components/mainApp/portfolioContext";
+import { PortfolioProvider } from "@/components/mainApp/portfolioContext";
 
 export default function DashboardLayout({
   children,

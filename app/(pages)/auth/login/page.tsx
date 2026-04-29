@@ -1,20 +1,20 @@
-"use client";
 
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { FormEvent, useState } from "react";
-import { useRouter } from "next/navigation";
-import { useAuth } from "@/app/hooks/api/useAuth";
-import Image from "next/image";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/hooks/api/useAuth";
+import Image from "@/components/Image";
 import { GoogleLogin } from "@react-oauth/google";
 
 export default function LoginView() {
-  const router = useRouter();
+  const navigate = useNavigate();
   const { login, loginWithGoogle, authError, clearAuthError } = useAuth();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [email, setEmail] = useState(process.env.NEXT_PUBLIC_DEV_EMAIL ?? "");
-  const [password, setPassword] = useState(process.env.NEXT_PUBLIC_DEV_PASSWORD ?? "");
+  const [email, setEmail] = useState(import.meta.env.VITE_DEV_EMAIL ?? "");
+  const [password, setPassword] = useState(import.meta.env.VITE_DEV_PASSWORD ?? "");
   const [twoFactorCode, setTwoFactorCode] = useState("");
   const [needsTwoFactor, setNeedsTwoFactor] = useState(false);
+  const [googleError, setGoogleError] = useState<string | null>(null);
 
   function normalizeCodeInput(value: string): string {
     return value.replace(/\D/g, "").slice(0, 6);
@@ -39,7 +39,7 @@ export default function LoginView() {
       });
       setNeedsTwoFactor(false);
       setTwoFactorCode("");
-      router.push("/mainApp?view=dashboard");
+      navigate("/mainApp?view=dashboard");
     } catch (error) {
       const message = getErrorMessage(error);
       if (message.includes("two-factor code required")) {
@@ -110,20 +110,26 @@ export default function LoginView() {
 
             {!needsTwoFactor ? (
               <>
+                {googleError ? (
+                  <p className="mb-3 rounded-xl border border-rose-400/35 bg-rose-500/10 px-3 py-2 text-sm text-rose-200">
+                    {googleError}
+                  </p>
+                ) : null}
                 <div className="flex w-full justify-center">
                   <GoogleLogin
                     onSuccess={async (credentialResponse) => {
+                      setGoogleError(null);
                       if (credentialResponse.credential) {
                         try {
                           await loginWithGoogle(credentialResponse.credential);
-                          router.push("/mainApp?view=dashboard");
-                        } catch (error) {
-                          console.error("Google sign-in failed:", error);
+                          navigate("/mainApp?view=dashboard");
+                        } catch {
+                          // authError is set in context and shown below
                         }
                       }
                     }}
                     onError={() => {
-                      console.error("Google Login Failed");
+                      setGoogleError("Google sign-in failed. Make sure pop-ups are allowed and try again.");
                     }}
                     theme="filled_black"
                     shape="rectangular"
@@ -226,7 +232,7 @@ export default function LoginView() {
                   Remember me
                 </label>
                 <Link
-                  href="/auth/forgot-password"
+                  to="/auth/forgot-password"
                   className="text-sm font-semibold text-white/70 transition hover:text-[#FFB95D]"
                 >
                   Forgot password?
@@ -250,7 +256,7 @@ export default function LoginView() {
               <p className="pt-2 text-center text-sm text-white/70">
                 New here?{" "}
                 <Link
-                  href="/auth/register"
+                  to="/auth/register"
                   className="font-semibold text-[#FFB95D] transition hover:text-[#ffd39a]"
                 >
                   Create account

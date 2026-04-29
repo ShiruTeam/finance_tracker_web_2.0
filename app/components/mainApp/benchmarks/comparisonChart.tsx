@@ -1,7 +1,6 @@
-"use client";
 
 import { useMemo, useState } from "react";
-import TradingViewChart from "@/app/components/mainApp/charts/tradingViewChart";
+import TradingViewChart from "@/components/mainApp/charts/tradingViewChart";
 
 type ComparisonChartProps = {
   labels: string[];

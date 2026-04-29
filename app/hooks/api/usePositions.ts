@@ -3,7 +3,7 @@
 import { useCallback, useState } from "react";
 import { apiClient } from "@/lib/api/client";
 import type { CreatePositionRequest, Position, PositionWithMetrics, UpdatePositionRequest } from "@/lib/api/types";
-import { useAuth } from "@/app/hooks/api/useAuth";
+import { useAuth } from "@/hooks/api/useAuth";
 
 export function usePositions() {
   const { token } = useAuth();

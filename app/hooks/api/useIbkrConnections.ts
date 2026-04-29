@@ -7,7 +7,7 @@ import type {
   IbkrConnection,
   UpdateIbkrConnectionRequest,
 } from "@/lib/api/types";
-import { useAuth } from "@/app/hooks/api/useAuth";
+import { useAuth } from "@/hooks/api/useAuth";
 
 export function useIbkrConnections() {
   const { token } = useAuth();

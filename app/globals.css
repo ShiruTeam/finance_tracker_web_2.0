@@ -1,9 +1,48 @@
 @import "tailwindcss";
 @config "../tailwind.config.ts";
 
+@font-face {
+    font-family: 'Alpino';
+    src: url('/fonts/alpino/Alpino-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Alpino';
+    src: url('/fonts/alpino/Alpino-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Alpino';
+    src: url('/fonts/alpino/Alpino-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Alpino';
+    src: url('/fonts/alpino/Alpino-Black.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Sentient';
+    src: url('/fonts/sentient/Sentient-Italic.woff2') format('woff2');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
 :root {
     --background: #252422;
     --foreground: #ededed;
+    --font-alpino: 'Alpino', system-ui, sans-serif;
+    --font-sentient: 'Sentient', Georgia, serif;
+    --font-geist-mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, monospace;
 }
 
 html {

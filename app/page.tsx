@@ -1,7 +1,5 @@
-"use client";
 
-import Link from "next/link";
-import LandingHeroClient from "@/app/components/landing/landingHeroClient";
+import LandingHeroClient from "@/components/landing/landingHeroClient";
 import LandingSecondSection from "./components/landing/secondSection";
 import Connections from "./components/landing/connections";
 import Footer from "./components/landing/footer";

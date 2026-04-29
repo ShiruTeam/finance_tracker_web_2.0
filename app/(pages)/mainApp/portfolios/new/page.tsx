@@ -1,9 +1,8 @@
-"use client";
 
 import { FormEvent, useState } from "react";
 import { apiClient } from "@/lib/api/client";
-import { useAuth } from "@/app/hooks/api/useAuth";
-import { usePortfolio } from "@/app/components/mainApp/portfolioContext";
+import { useAuth } from "@/hooks/api/useAuth";
+import { usePortfolio } from "@/components/mainApp/portfolioContext";
 
 export default function CreatePortfolioPage() {
   const { token } = useAuth();

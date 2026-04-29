@@ -1,14 +1,13 @@
-"use client";
 
 import { useEffect, useMemo, useState } from "react";
-import AssetAllocationChart from "@/app/components/mainApp/dashboard/assetAllocationChart";
-import DateRangePicker from "@/app/components/mainApp/analytics/dateRangePicker";
-import PerformanceChartAnalytics from "@/app/components/mainApp/analytics/performanceChartAnalytics";
-import PerformanceMetrics from "@/app/components/mainApp/analytics/performanceMetrics";
-import ReturnsCalendar from "@/app/components/mainApp/analytics/returnsCalendar";
-import SnapshotHistory from "@/app/components/mainApp/analytics/snapshotHistory";
-import { usePortfolio } from "@/app/components/mainApp/portfolioContext";
-import { useAnalytics } from "@/app/hooks/api/useAnalytics";
+import AssetAllocationChart from "@/components/mainApp/dashboard/assetAllocationChart";
+import DateRangePicker from "@/components/mainApp/analytics/dateRangePicker";
+import PerformanceChartAnalytics from "@/components/mainApp/analytics/performanceChartAnalytics";
+import PerformanceMetrics from "@/components/mainApp/analytics/performanceMetrics";
+import ReturnsCalendar from "@/components/mainApp/analytics/returnsCalendar";
+import SnapshotHistory from "@/components/mainApp/analytics/snapshotHistory";
+import { usePortfolio } from "@/components/mainApp/portfolioContext";
+import { useAnalytics } from "@/hooks/api/useAnalytics";
 
 function monthsToRange(selectedRange: "3M" | "6M" | "1Y") {
   const to = new Date();

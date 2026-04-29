@@ -1,7 +1,6 @@
-"use client";
 
-import Image from "next/image";
-import Link from "next/link";
+import Image from "@/components/Image";
+import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 
 export default function NotFound() {
@@ -13,12 +12,12 @@ export default function NotFound() {
         <p className="text-sm font-medium tracking-[0.12em] text-neutral-500">404</p>
         <h1 className="mt-2 text-4xl font-black text-white">Page not found</h1>
         <p className="mt-3 text-sm text-neutral-500">
-          This page doesn't exist or was moved. Check the URL or head back to safety.
+          This page doesn&apos;t exist or was moved. Check the URL or head back to safety.
         </p>
 
         <div className="mt-8 flex flex-col gap-3">
           <Link
-            href="/mainApp?view=dashboard"
+            to="/mainApp?view=dashboard"
             className="flex items-center justify-center gap-2 rounded-sm bg-white px-4 py-3 text-sm font-semibold text-black transition hover:bg-neutral-200"
           >
             Go to Dashboard

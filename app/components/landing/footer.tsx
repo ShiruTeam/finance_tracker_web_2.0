@@ -1,7 +1,5 @@
-"use client";
 
-import Image from "next/image";
-import Link from "next/link";
+import Image from "@/components/Image";
 
 type FooterLink = {
 	label: string;
@@ -57,9 +55,9 @@ export default function Footer() {
 							<ul className="mt-3 space-y-2 text-sm text-white/70">
 								{footerLinks.product.map((item: FooterLink) => (
 									<li key={item.label}>
-										<Link href={item.href} className="transition-colors hover:text-white">
+										<a href={item.href} className="transition-colors hover:text-white">
 											{item.label}
-										</Link>
+										</a>
 									</li>
 								))}
 							</ul>
@@ -70,9 +68,9 @@ export default function Footer() {
 							<ul className="mt-3 space-y-2 text-sm text-white/70">
 								{footerLinks.company.map((item: FooterLink) => (
 									<li key={item.label}>
-										<Link href={item.href} className="transition-colors hover:text-white">
+										<a href={item.href} className="transition-colors hover:text-white">
 											{item.label}
-										</Link>
+										</a>
 									</li>
 								))}
 							</ul>
@@ -83,9 +81,9 @@ export default function Footer() {
 							<ul className="mt-3 space-y-2 text-sm text-white/70">
 								{footerLinks.resources.map((item: FooterLink) => (
 									<li key={item.label}>
-										<Link href={item.href} className="transition-colors hover:text-white">
+										<a href={item.href} className="transition-colors hover:text-white">
 											{item.label}
-										</Link>
+										</a>
 									</li>
 								))}
 							</ul>

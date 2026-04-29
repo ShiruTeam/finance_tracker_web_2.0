@@ -1,6 +1,5 @@
-"use client";
 
-import Image from "next/image";
+import Image from "@/components/Image";
 import { Suspense } from "react";
 import ResetPasswordForm from "./reset-password-form";
 

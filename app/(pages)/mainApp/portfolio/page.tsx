@@ -1,7 +1,6 @@
-"use client";
 
-import Link from "next/link";
-import { usePortfolio } from "@/app/components/mainApp/portfolioContext";
+import { Link } from "react-router-dom";
+import { usePortfolio } from "@/components/mainApp/portfolioContext";
 
 export default function PortfolioHubPage() {
   const { selectedPortfolioId, setSelectedPortfolioId, portfolios, loading, error } = usePortfolio();
@@ -16,13 +15,13 @@ export default function PortfolioHubPage() {
 
         <section className="flex flex-wrap gap-2">
           <Link
-            href="/mainApp/portfolios/new"
+            to="/mainApp/portfolios/new"
             className="rounded-sm border border-[#14b8a6]/30 bg-[#14b8a6]/10 px-4 py-2 text-sm font-semibold text-[#2dd4bf]"
           >
             Create Portfolio
           </Link>
           <Link
-            href="/mainApp/settings"
+            to="/mainApp/settings"
             className="rounded-sm border border-surface bg-transparent px-4 py-2 text-sm font-semibold text-white"
           >
             Portfolio Settings
